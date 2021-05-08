@@ -5,6 +5,7 @@ const hostname = '127.0.0.1'
 const port = 3005
 const path = require('path')
 const publicDirectoryPath = path.join(__dirname, 'views')
+// const PORT = process.env.PORT || 5000
 // const Foodie = require('databasegoeshere')
 
 app.set('view engine', 'ejs');
@@ -29,3 +30,10 @@ app.get('/foodie', async (req, res) => {
 
 app.listen(port, hostname, () => {
     console.log(`Server is up on http://${hostname}:${port} `)
+
+    // .listen(PORT, () => console.log(`Listening on ${PORT}`))
+})
+const server = app.listen(process.env.PORT || 5000, () => {
+    const port = server.address().port;
+    console.log(`Express is working on port ${port}`);
+});
