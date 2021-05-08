@@ -5,6 +5,7 @@ const hostname = '127.0.0.1'
 const port = 3005
 const path = require('path')
 const publicDirectoryPath = path.join(__dirname, 'views')
+
 // const Foodie = require('databasegoeshere')
 const bodyParser = require('body-parser');
 
@@ -40,4 +41,10 @@ app.post('/foodie/signup', function (req, res, next) {
 
 app.listen(port, hostname, () => {
     console.log(`Server is up on http://${hostname}:${port} `)
+
+
 })
+const server = app.listen(process.env.PORT || 5000, () => {
+    const port = server.address().port;
+    console.log(`Express is working on port ${port}`);
+});
