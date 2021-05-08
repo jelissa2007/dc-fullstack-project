@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.set('views', publicDirectoryPath)
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.render('foodie')
 })
 
 app.get('/foodie:id', async (req, res) => {
@@ -29,3 +29,4 @@ app.get('/foodie', async (req, res) => {
 
 app.listen(port, hostname, () => {
     console.log(`Server is up on http://${hostname}:${port} `)
+})
