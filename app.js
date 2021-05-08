@@ -1,4 +1,4 @@
-const { Router } = require('express')
+// const { Router } = require('express')
 const express = require('express')
 const app = express()
 const hostname = '127.0.0.1'
@@ -6,6 +6,9 @@ const port = 3005
 const path = require('path')
 const publicDirectoryPath = path.join(__dirname, 'views')
 // const Foodie = require('databasegoeshere')
+const bodyParser = require('body-parser');
+
+app.use(express.urlencoded());
 
 app.use(express.static('public'));
 
@@ -16,17 +19,14 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
-app.post('foodie/signup', async (req, res) => {
-    var user = {
-        first: req.body.first_name,
-        last: req.body.last_name,
-        username: req.body.username
-    }
-    res.render('foodie/signup', {
-        userValue: user,
-        topicHead: 'Sign-Up'
-    });
+app.get('/foodie/signup', (req, res) => {
+    res.render('foodie/signup')
 })
+
+app.post('/foodie/signup', function (req, res, next) {
+    res.send(JSON.stringify(req.body));
+});
+
 
 // app.get('/foodie:id', async (req, res) => {
 
