@@ -1,3 +1,4 @@
+const { Router } = require('express')
 const express = require('express')
 const app = express()
 const hostname = '127.0.0.1'
@@ -13,15 +14,18 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
-// app.get('/foodie', async (req, res) => {
-//     const foodie = await Foodie.find({})
-//     res.render('foodie/index', { foodie })
-// })
+app.get('/foodie:id', async (req, res) => {
+    res.render('foodie/signup')
+})
 
-// app.get('/foodie:id', async (req, res) => {
-//     res.render('foodie/popout')
-// })
+app.get('/foodie:id', async (req, res) => {
+    res.render('foodie/details')
+})
+
+app.get('/foodie', async (req, res) => {
+    const foodie = await Foodie.find({})
+    res.render('foodie/favorites', { foodie })
+})
 
 app.listen(port, hostname, () => {
     console.log(`Server is up on http://${hostname}:${port} `)
-})
