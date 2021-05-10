@@ -4,21 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign-Up</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <form class="form-signin" action="/login" method="post">
+    <form class="form-signin" action="/foodie/signup" method="post">
 
-        <h2 class="form-signin-heading">Welcome sign in</h2>
+        <h2 class="form-signin-heading">Welcome! Sign-Up</h2>
 
-        <label for="inputName" class="sr-only">First Name</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
-        <label for="inputName" class="sr-only">Last Name</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
-        <label for="inputName" class="sr-only">Username</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required="">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <!-- <label for="inputName" class="sr-only">First Name</label> -->
+        <input type="text" id="name" name="users[first_name]" class="form-control" placeholder="First Name" required="">
+        <br>
+        <!-- <label for="inputName" class="sr-only">Last Name</label> -->
+        <input type="text" id="name" name="users[last_name]" class="form-control" placeholder="Last Name" required="">
+        <br>
+        <!-- <label for="inputName" class="sr-only">Username</label> -->
+        <input type="text" id="name" name="users[username]" class="form-control" placeholder="Username" required="">
+        <br>
+        <button class="submit-button" type="submit">Sign in</button>
+
+    </form>
 </body>
 
 </html>

@@ -1,3 +1,41 @@
-*{
-  color: blue;  
+body{
+  /* background-color: rgb(202, 223, 164); */
+}
+
+.app-box{
+    height: 720px;
+    width: 400px;
+}
+
+/* sign-up portion */
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 20%;
+}
+
+form{
+	background: #f6f5f7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+
+.submit-button {
+	border-radius: 20px;
+	border: 1px solid #000000;
+	background-color: #7fb97f;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+cursor: pointer;
 }
