@@ -5,7 +5,7 @@ const hostname = '127.0.0.1'
 const port = 3005
 const path = require('path')
 const publicDirectoryPath = path.join(__dirname, 'views')
-
+const { Users } = require('./models')
 // const Foodie = require('databasegoeshere')
 const bodyParser = require('body-parser');
 
