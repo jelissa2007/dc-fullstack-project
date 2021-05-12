@@ -1,6 +1,4 @@
-body{
-  /* background-color: rgb(202, 223, 164); */
-}
+
 
 .app-box{
     height: 720px;
@@ -40,3 +38,14 @@ form{
 cursor: pointer;
 }
 
+/* pop out */
+#pop-out{
+	position: fixed;
+	top:40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 600px;
+	padding: 50px;
+	box-shadow: 0 5px 30px rgba(0,0,0,.40);
+	background-color: white;
+}
