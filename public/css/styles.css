@@ -35,6 +35,11 @@ h1{
   cursor: pointer;
 }
 
+#dislike:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
 #like {
   background-color: #d52e3f;
   border: none;
@@ -44,4 +49,9 @@ h1{
   font-size: 16px;
   cursor: pointer;
 
+}
+
+#like:hover {
+  background-color: #Fc84b4;
+  color: white;
 }
