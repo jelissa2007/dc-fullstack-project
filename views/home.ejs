@@ -20,11 +20,11 @@
         <div class="container" id="blur">
             <div class="content">
 
-                <a href="#" onclick="toggle()"><img src="#"></a>
+                <a href="#" onclick="toggle()"><img src="<%=restaurant[selectedRestaurant].food_photo%>"></a>
 
-                <h2>restaurant.name</h2>
+                <h2><%=restaurant[selectedRestaurant].restaurant_name%></h2>
 
-                <span>restaurants.cuisine_type/ restaurants.price_range</span>
+                <span><%=restaurant[selectedRestaurant].cuisine_type%>/ chefs.price_range</span>
 
                 <br>
                 <br>
@@ -53,29 +53,30 @@
 
         </nav>
         <div id="menu">
+
+            <img src="<%=restaurant[selectedRestaurant].location_photo%>">
             <h2>Menu Details</h2>
-            <img src="menu_photo.menu_photo">
+            <img src="<%=restaurant[selectedRestaurant].menu_photo%>">
         </div>
         <div id="chef">
             <h2>About Chef</h2>
-            <img src="chef.chef_photo_id">
+            <img src="<%=restaurant[selectedRestaurant].chef_photo%>">
             <p>chef.first_name chef.last_name </p>
-            <p>chef.background</p>
+
         </div>
         <div id="dishes">
             <h2>Top Dishes</h2>
-            <img src="#">
-            <ul>
-                <li> menu.popular_dish </li>
-            </ul>
+            <img src="<%=restaurant[selectedRestaurant].food_photo%>">
+            <p><%=restaurant[selectedRestaurant].popular_dish%></p>
+
         </div>
         <div id="details">
             <h2>Restaurant Details</h2>
-            <p> restaurant.name </p>
-            <p> restaurant.address </p>
-            <p> restaurant.phone_number </p>
-            <p> restaurant.hours </p>
-            <p> restaurant.website </p>
+            <p> <%=restaurant[selectedRestaurant].restaurant_name%> </p>
+            <p> <%=restaurant[selectedRestaurant].address%></p>
+            <p> <%=restaurant[selectedRestaurant].phone_number%></p>
+            <p> <%=restaurant[selectedRestaurant].hours%></p>
+            <p> <%=restaurant[selectedRestaurant].website%></p>
         </div>
 
         <a href="#" onclick="toggle()">CLOSE POPOUT</a>
