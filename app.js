@@ -1,7 +1,6 @@
 // const { Router } = require('express')
 const express = require('express')
 const bodyParser = require('body-parser');
-
 const path = require('path')
 const publicDirectoryPath = path.join(__dirname, 'views')
 
@@ -9,7 +8,19 @@ const app = express()
 
 const PORT = process.env.PORT || 3005;
 
-// const db = require('./config/sample-config');
+const db = require('./models');
+console.log(db.Users)
+
+const restaurant = require('./models/restaurants')
+const user = require('./models/users')
+
+const users = db.Users.findAll().then(function (user) {
+    console.log(user)
+})
+
+const restaurants = db.Restaurants.findAll().then(function (restaurant) {
+    console.log(restaurant)
+})
 
 app.use(express.urlencoded());
 
@@ -19,15 +30,26 @@ app.set('view engine', 'ejs');
 app.set('views', publicDirectoryPath)
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.render('home', {
+
+        locals: {
+            users: users
+        }
+
+    });
+
 })
 
 app.get('/foodie/signup', (req, res) => {
     res.render('foodie/signup')
 })
 
-app.post('/foodie/signup', function (req, res, next) {
+app.post('/foodie/signup', async function (req, res, next) {
+    // console.log(req.body)
+    const user = await db.Users.create(req.body.users)
+
     res.send(JSON.stringify(req.body));
+
 });
 
 
