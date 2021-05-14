@@ -11,14 +11,14 @@ const PORT = process.env.PORT || 3005;
 const db = require('./models');
 console.log(db.Users)
 
-const restaurant = require('./models/restaurants')
+const restaurant = require('./models/restaurant')
 const user = require('./models/users')
 
 const users = db.Users.findAll().then(function (user) {
     console.log(user)
 })
 
-const restaurants = db.Restaurants.findAll().then(function (restaurant) {
+const restaurants = db.Restaurant.findAll().then(function (restaurant) {
     console.log(restaurant)
 })
 
