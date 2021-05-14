@@ -14,35 +14,38 @@
 
             <div class="pop-out-window">
                 <ul>
-                    <li><a href="#">Menu Details</a></li>
-                    <li><a href="#">About The Chef</a></li>
-                    <li><a href="#">Top Dishes</a></li>
-                    <li><a href="#">Restaurant Details</a></li>
+                    <li><a href="#menu">Menu Details</a></li>
+                    <li><a href="#chef">About The Chef</a></li>
+                    <li><a href="#dishes">Top Dishes</a></li>
+                    <li><a href="#details">Restaurant Details</a></li>
                 </ul>
             </div>
         </nav>
-
-        <h2>Menu Details</h2>
-        <p>menu details from db</p>
-
-        <h2>About Chef</h2>
-        <p>about the chef</p>
-
-        <h2>Top Dishes</h2>
-        <img src="#">
-        <ul>
-            <li>item 1</li>
-            <li>item 2</li>
-            <li>item 3</li>
-            <li>item 4</li>
-            <li>item 5</li>
-        </ul>
-
-        <h2>Restaurant Details</h2>
-        <p>Name</p>
-        <p>address</p>
-        <p>phone number</p>
-        <p>website</p>
+        <div id="menu">
+            <h2>Menu Details</h2>
+            <img src="<%= menu_photo.menu_photo =%>">
+        </div>
+        <div id="chef">
+            <h2>About Chef</h2>
+            <img src="<%= chef.chef_photo_id =%>">
+            <p><%= chef.first_name =%> <%= chef.last_name =%></p>
+            <p><%= chef.background =%></p>
+        </div>
+        <div id="dishes">
+            <h2>Top Dishes</h2>
+            <img src="#">
+            <ul>
+                <li> menu.popular_dish </li>
+            </ul>
+        </div>
+        <div id="details">
+            <h2>Restaurant Details</h2>
+            <p> restaurant.name </p>
+            <p> restaurant.address </p>
+            <p> restaurant.phone_number </p>
+            <p> restaurant.hours </p>
+            <p> restaurant.website </p>
+        </div>
     </div>
 </body>
 

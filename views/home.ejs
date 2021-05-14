@@ -12,40 +12,77 @@
 </head>
 
 <body>
-
     <h1>Foodie</h1>
 
 
+
     <div>
+        <div class="container" id="blur">
+            <div class="content">
 
-        <a href="#"><img src="#"></a>
+                <a href="#" onclick="toggle()"><img src="#"></a>
 
-        <h2>restaurant name</h2>
+                <h2>restaurant.name</h2>
 
-        <span>cuisine type/price point</span>
+                <span>restaurants.cuisine_type/ restaurants.price_range</span>
 
-        <br>
-        <br>
-        <button id="dislike" class="fa fa-close"></i></button><span style="display:inline-block; width: 20px;"></span>
-        <button id="like"><i class="fa fa-heart"></i></button>
-
-    </div>
-    <br>
-    <br>
-    <br>
-    <button id="favorites">Access Your Favorites!</button>
-    <div class="container" id="blur">
-        <div class="content">
-            <h2>Resturant Goes HERE</h2>
-            <a href="#" onclick="toggle()">CLICK HERE FOR FOODIE DETAILS</a>
+                <br>
+                <br>
+                <button id="dislike" class="fa fa-close"></i></button><span
+                    style="display:inline-block; width: 20px;"></span>
+                <button id="like"><i class="fa fa-heart"></i></button>
+            </div>
         </div>
     </div>
+
+    <br>
+    <br>
+    <br>
+
+    <button id="favorites">Access Your Favorites!</button>
+
+
+
     <div id="popup">
-        <h2>Resturant Details Pop Out Here</h2>
+        <ul>
+            <li><a href="#menu">Menu Details</a></li>
+            <li><a href="#chef">About The Chef</a></li>
+            <li><a href="#dishes">Top Dishes</a></li>
+            <li><a href="#details">Restaurant Details</a></li>
+        </ul>
+
+        </nav>
+        <div id="menu">
+            <h2>Menu Details</h2>
+            <img src="menu_photo.menu_photo">
+        </div>
+        <div id="chef">
+            <h2>About Chef</h2>
+            <img src="chef.chef_photo_id">
+            <p>chef.first_name chef.last_name </p>
+            <p>chef.background</p>
+        </div>
+        <div id="dishes">
+            <h2>Top Dishes</h2>
+            <img src="#">
+            <ul>
+                <li> menu.popular_dish </li>
+            </ul>
+        </div>
+        <div id="details">
+            <h2>Restaurant Details</h2>
+            <p> restaurant.name </p>
+            <p> restaurant.address </p>
+            <p> restaurant.phone_number </p>
+            <p> restaurant.hours </p>
+            <p> restaurant.website </p>
+        </div>
 
         <a href="#" onclick="toggle()">CLOSE POPOUT</a>
-
     </div>
+    </div>
+
+
 
 
     <!-- <div class="footer">

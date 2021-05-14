@@ -9,7 +9,17 @@
 
 <body>
     <h1>Your Liked Restaurants</h1>
-    <li><%= foodie.title =%></li>
+
+    <% for (let favorite of favorites ){%>
+
+
+    <li><%= favorite.name =%></li>
+    <li><%= favorite.price_range =%></li>
+    <li><%= favorite.address =%></li>
+    <li><%= favorite.website =%></li>
+    <li><%= favorite.hours =%></li>
+    <button>remove</button>
+    <% } %>
 </body>
 
 </html>
