@@ -23,7 +23,118 @@ body{
 				  40px 40px 0px #c11a2b, 
 				  45px 45px 0px #c11a2b;
   }
-  
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  @media (min-width: 992px) {
+    .col-4 {
+        grid-column: span 4;
+    }
+}
+  #foodie_app{
+	  padding: 10px 15px 0;
+  }
+
+  #foodie_app > section:not(#foodie_header_bar) {
+	  padding-top: 25px;
+	  padding-bottom: 10px;
+	  border-bottom: 2px solid #eee;
+  }
+
+  #foodie_header_bar{
+	  padding-top: 25px;
+	  padding-bottom: 0;
+	
+  }
+
+  #foodie_page_title{
+	  font-size: 15px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+	  margin-left: -15px;
+  }
+
+  .heading{
+	  font-size: 15px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+  }
+
+  .btn{
+	  width: 100%;
+	  background:transparent;
+	  border: 1px solid #ff286c;
+	  border-radius: 2px;
+	  padding: 3px;
+	  color:#ff286c;
+	  font-size:14px;
+	  font-weight: 300;
+	  margin-top: 15px;
+	  margin-bottom: 20px;
+  }
+
+  .active .btn{
+	  background: #ff286c;
+	  color: #fff;
+  }
+
+  #foodie_price_body .line1{
+	  height: 2px;
+	  width: 100%;
+	  background: #eee;
+  }
+
+  #foodie_price_body .line{
+	  position: absolute;
+	  height: 2px;
+	  width: 45%;
+	  background: #ff286c;
+	  left: 9%;
+  }
+
+  #foodie_price_body .line:before{
+	  position: absolute;
+	  content: '';
+	  display: block;
+	  height: 6px;
+	  width: 6px;
+	  background: #ff286c;
+	  border-radius: 50%;
+	  left: -2px;
+	  top: -2px;
+
+  }
+
+  #foodie_price_body .line:after{
+	position: absolute;
+	content: '';
+	display: block;
+	height: 6px;
+	width: 6px;
+	background: #ff286c;
+	border-radius: 50%;
+	right: -2px;
+	bottom: -2px;
+  }
+
+  #foodie_price_body ul{
+	  padding: 0;
+	  margin-top: 20px;
+	  margin-bottom: 0;
+  }
+
+  #foodie_price_body ul li{
+	  list-style: none;
+	  display: inline-block;
+	  color: #d4d4d4;
+  }
+
+  #foodie_price_body ul li:last-child{
+	  float: right;
+  }
   
   #dislike {
 	background-color:#052939;
