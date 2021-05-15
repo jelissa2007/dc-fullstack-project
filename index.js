@@ -1,27 +1,22 @@
 // const { Router } = require('express')
-const express = require('express')
-const bodyParser = require('body-parser');
-const path = require('path')
-const publicDirectoryPath = path.join(__dirname, 'views')
+const express=require('express')
+const bodyParser=require('body-parser');
+const path=require('path')
+const publicDirectoryPath=path.join(__dirname, 'views')
+const app=express()
 
-const app = express()
+const PORT=process.env.PORT||3005;
 
-const PORT = process.env.PORT || 3005;
-
-const db = require('./models');
+const db=require('./models');
 console.log(db.Users)
 
 
-const restaurant = require('./models/restaurant')
-const user = require('./models/users')
-
-
-const users = db.Users.findAll().then(function (user) {
+const users=db.Users.findAll().then(function (user) {
     // console.log(user)
 })
 
-app.use(express.urlencoded());
 
+app.use(express.urlencoded());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
@@ -31,9 +26,9 @@ app.set('views', publicDirectoryPath)
 app.get('/', async (req, res) => {
     const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
         const dbrestaurant=JSON.stringify(restaurant)
-        console.log(dbrestaurant)
+        // console.log(dbrestaurant)
 
-        let selectedRestaurant=1
+        let selectedRestaurant=0
 
         const chefs=db.Chefs.findAll().then(function (chef) {
             const dbchef=JSON.stringify(chef)
@@ -54,12 +49,17 @@ app.post('/foodie/signup', async function (req, res, next) {
     // console.log(req.body)
     const user=await db.Users.create(req.body.users)
 
-    res.redirect('/')
+    res.redirect('/foodie/signedin')
 
 
 });
 
+app.get('/foodie/signedin', (req, res) => {
+    res.render('foodie/signed-up')
+    res.redirect('/')
+})
 
+// favorites route
 // app.get('/foodie:id', async (req, res) => {
 // const favorites = await Restaurant.findAll({
 //     attributes: ["id"], 
@@ -74,12 +74,12 @@ app.post('/foodie/signup', async function (req, res, next) {
 //     res.render('foodie/favorites', { foodie })
 // })
 
-// app.listen(port, hostname, () => {
-//     console.log(`Server is up on http://${hostname}:${port} `)
 
 
-// })
-const server = app.listen(PORT, () => {
 
-    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}`);
+
+
+const server=app.listen(PORT, () => {
+
+    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}/foodie/signup`);
 });
