@@ -1,5 +1,45 @@
+
+html body{
+	background-color: whitesmoke;
+	font-family: 'Montserrat Alternates', sans-serif;
+	margin:0;
+  }
+  
+  h1{
+	  margin-top: 0;
+	  /* margin-bottom: 20; */
+	  font-size: 8rem;
+	  text-align: center;
+	  height:27vh;
+	  line-height: 22vh;
+	  color: #fcedd8;
+	  background: #d52e3f;
+	  font-family: 'Niconne', cursive;
+	  font-weight: 600;
+	  text-shadow: 5px 5px 0px #eb452b, 
+				  10px 10px 0px #efa032, 
+				  15px 15px 0px #46b59b, 
+				  20px 20px 0px #017e7f, 
+				  25px 25px 0px #052939, 
+				  30px 30px 0px #c11a2b, 
+				  35px 35px 0px #c11a2b, 
+				  40px 40px 0px #c11a2b, 
+				  45px 45px 0px #c11a2b;
+  }
+ 
+  .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  @media (min-width: 992px) {
+    .col-4 {
+        grid-column: span 4;
+    }
+
 body {
   background-color: whitesmoke;
+
 }
 
 h1 {
@@ -254,6 +294,19 @@ li a {
   transition: 0.5s;
 }
 .footer {
+
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #D52E3F;
+	font-family:'Montserrat Alternates', sans-serif;;
+	color: #fcedd8;
+	text-align: center;
+	font-size: 20px;			
+ }
+
+
   position: fixed;
   left: 0;
   bottom: 0;
@@ -264,6 +317,7 @@ li a {
   text-align: center;
   font-size: 20px;
 }
+
 
 .footer {
   position: fixed;
@@ -690,6 +744,60 @@ a {
   to {
     background-position: 20vw;
   }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+  
+#favorites{
+	background-color: #343A40;
+	border-radius: 4px;  
+	color: #fff;
+	cursor: pointer;
+	padding: 8px 16px;
+	
+  }
+  #favorites:hover{
+	 background-image:     
+	 linear-gradient(
+		to right, 
+		#eb452b,
+		#eb452b 16.65%,
+		#efa032 16.65%,
+		#efa032 33.3%,
+		#46b59b 33.3%,
+		#46b59b 49.95%,
+		#017e7f 49.95%,
+		#017e7f 66.6%,
+		#052939 66.6%,
+		#052939 83.25%,
+		#c11a2b 83.25%,
+		#c11a2b 100%,
+		#eb452b 100%
+	   
+	   
+	   
+	  );
+	animation:slidebg 2s linear infinite;
+  }
+  
+  
+  @keyframes slidebg {
+	to {
+	  background-position:20vw;
+	}
+  }
+  
+  .follow{
+	margin-top: 40px;
+  }
+  
+  .follow a{
+	color: black;
+	padding: 8px 16px;
+	text-decoration: none;
+  }
+
 }
 
 .follow {
@@ -701,3 +809,4 @@ a {
   padding: 8px 16px;
   text-decoration: none;
 }
+
