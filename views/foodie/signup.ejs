@@ -7,24 +7,66 @@
     <title>Sign-Up</title>
 
     <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation: animateBg 17s linear infinite;
+            background-image: linear-gradient(45deg, #c11a2b, #eb452b, #efa032, #eb452b, #c11a2b);
+            background-size: 100% 1000%;
+            height: auto;
+            width: 100vw;
+        }
+
+        @keyframes animateBg {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+
+        #card {
+            /* position: relative; */
+            top: 110px;
+            width: 320px;
+            display: block;
+            margin: auto;
+            text-align: center;
+            font-family: 'Source Sans Pro', sans-serif;
+            padding: 2em 2em 5em 2em;
+            background: #fff;
+            display: block;
+            border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+    </style>
 </head>
 
 <body>
+
     <form class="form-signin" action="/foodie/signup" method="post">
+        <div id="card">
+            <h2 class="form-signin-heading">Welcome! Sign-Up</h2>
 
-        <h2 class="form-signin-heading">Welcome! Sign-Up</h2>
-
-        <!-- <label for="inputName" class="sr-only">First Name</label> -->
-        <input type="text" id="name" name="users[first_name]" class="form-control" placeholder="First Name" required="">
-        <br>
-        <!-- <label for="inputName" class="sr-only">Last Name</label> -->
-        <input type="text" id="name" name="users[last_name]" class="form-control" placeholder="Last Name" required="">
-        <br>
-        <!-- <label for="inputName" class="sr-only">Username</label> -->
-        <input type="text" id="name" name="users[username]" class="form-control" placeholder="Username" required="">
-        <br>
-        <button class="submit-button" type="submit">Sign in</button>
-
+            <!-- <label for="inputName" class="sr-only">First Name</label> -->
+            <input type="text" id="name" name="users[first_name]" class="form-control" placeholder="First Name"
+                required="" style="width: 150px;">
+            <br>
+            <!-- <label for="inputName" class="sr-only">Last Name</label> -->
+            <input type="text" id="name" name="users[last_name]" class="form-control" placeholder="Last Name"
+                required="" style="width: 150px;">
+            <br>
+            <!-- <label for="inputName" class="sr-only">Username</label> -->
+            <input type="text" id="name" name="users[username]" class="form-control" placeholder="Username" required=""
+                style="width: 150px;">
+            <br><br>
+            <button class="submit-button" type="submit">Sign in</button>
+        </div>
     </form>
 </body>
 
