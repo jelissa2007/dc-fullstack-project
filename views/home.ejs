@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.fontawesome.com/2fe46feff2.js"></script>
     <title>Home</title>
     <%- include('partials/header' ) %>
 </head>
@@ -12,6 +13,7 @@
     <h1>Foodie</h1>
 
     <script>
+
         let selectedRestaurant= <%= selectedRestaurant %>;
 
         let restaurants= <%- restaurant%>;
@@ -22,27 +24,34 @@
             selectedRestaurant++
             let restTemplate=`
             <div id="main">
+            <br>
             <div class="container" id="blur">
             <div class="content" id="content">
-            
+                <div id='card'>
+        
+                <div id="here"></div>
+                <div id='upper-side'>
             <a href="#here"> <img src="${restaurants[selectedRestaurant].food_photo}" onclick="toggle()"
                         id="foodPic"></a>
+            </div>
+            <div id='lower-side'>            
             <h2 id="restName">${restaurants[selectedRestaurant].restaurant_name}</h2>
 
-            <span id="restCuisine">${restaurants[selectedRestaurant].cuisine_type} <span id="price">${chef[(restaurants[selectedRestaurant].chef_id)].last_name}</span></span>
+            <span id="restCuisine"><span id="cuisine_type">${restaurants[selectedRestaurant].cuisine_type}</span> <span id="price">${chef[(restaurants[selectedRestaurant].chef_id)].last_name}</span></span>
 
-            <br>
-            <br> 
+            <br><br>
             
+           </div>
+           <br>
             <button id="dislike" onclick="increment()"><i class="fa fa-close"></i></button><span
                     style="display:inline-block; width: 20px;"></span>
                 <button id="like" onclick="increment()"><i class="fa fa-heart"></i></button>
             </div>
         </div>
     </div>
-
-
-
+<br>
+    <button onclick="">Favorites</button>
+<br><br>
     <div id="popup">
         <ul>
             <li><a href="#menu">Menu Details</a></li>
@@ -55,34 +64,52 @@
         </nav>
 
         <br>
+        <figure class="popout_img">
+        
+        <h2>${restaurants[selectedRestaurant].restaurant_name}</h2>
 
         <img src="${restaurants[selectedRestaurant].location_photo}" id="restLocation">
+        
+        </figure>
+        <br><br><br>
+        
         <div id="menu">
+            
             <h2>Menu Details</h2>
             <img src="${restaurants[selectedRestaurant].menu_photo}" id="restMenu">
+        
         </div>
+   
+        <br><br>
         <div id="chef">
+           
             <h2>About Chef</h2>
             <img src="${restaurants[selectedRestaurant].chef_photo}" id="restChef">
+        
              <p>${chef[(restaurants[selectedRestaurant].chef_id)].first_name}</p>
 
         </div>
+        <br>
         <div id="dishes">
+            
             <h2>Top Dishes</h2>
             <img src="${restaurants[selectedRestaurant].food_photo}" id="restPopDish">
+        
             <p id="restPopDishDescription">${restaurants[selectedRestaurant].popular_dish}</p>
 
         </div>
+        <br>
         <div id="details">
+            
             <h2>Restaurant Details</h2>
             <p id="restName"> ${restaurants[selectedRestaurant].restaurant_name} </p>
             <p id="restAddress"> ${restaurants[selectedRestaurant].address}</p>
             <p id="restNumber"> ${restaurants[selectedRestaurant].phone_number}</p>
             <p id="restHours"> ${restaurants[selectedRestaurant].hours}</p>
-            <p id="restWebsite"> ${restaurants[selectedRestaurant].website}</p>
+            <p id="restWebsite"> <a href="${restaurants[selectedRestaurant].website}">${restaurants[selectedRestaurant].website}</a></p>
         </div>
 
-        <a href="#" onclick="toggle()">CLOSE POPOUT</a>
+       
     </div>
     </div>
 
@@ -110,10 +137,14 @@
         <div class="container" id="blur"> -->
 
     <div class="content" id="content">
-
-        <button onclick="increment()">Let's eat!</button>
-
+        <br><br><br>
+        <div class="start">
+            <button onclick="increment()" id="start"><i class="fa fa-cutlery fa-5x" aria-hidden="true"></i>
+            </button>
+        </div>
     </div>
+
+
     <%- include('partials/footer' ) %>
 
 </body>
