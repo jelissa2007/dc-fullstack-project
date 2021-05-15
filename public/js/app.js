@@ -1,4 +1,3 @@
-alert('hi!')
 
 // popout function 
 function toggle() {
@@ -29,3 +28,4 @@ function myFunction() {
       }
     }
   }
+

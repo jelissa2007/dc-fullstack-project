@@ -4,15 +4,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.fontawesome.com/2fe46feff2.js"></script>
     <title>Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Niconne" />
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="/js/app.js"></script>
+    <%- include('partials/header' ) %>
 </head>
 
 <body>
     <h1>Foodie</h1>
+
+    <script>
+      let selectedRestaurant= <%= selectedRestaurant %>;
+      let restaurants= <%- restaurant%>;
+      let chef= <%- chef%>;
+      function increment() {
+          selectedRestaurant++
+          let restTemplate=`
+          <div id="main">
+          <br>
+          <div class="container" id="blur">
+          <div class="content" id="content">
+              <div id='card'>
+      
+              <div id="here"></div>
+              <div id='upper-side'>
+          <a href="#here"> <img src="${restaurants[selectedRestaurant].food_photo}" onclick="toggle()"
+                      id="foodPic"></a>
+          </div>
+          <div id='lower-side'>            
+          <h2 id="restName">${restaurants[selectedRestaurant].restaurant_name}</h2>
+          <span id="restCuisine"><span id="cuisine_type">${restaurants[selectedRestaurant].cuisine_type}</span> <span id="price">${chef[(restaurants[selectedRestaurant].chef_id)].last_name}</span></span>
+          <br><br>
+          
+         </div>
+         <br>
+          <button id="dislike" onclick="increment()"><i class="fa fa-close"></i></button><span
+                  style="display:inline-block; width: 20px;"></span>
+              <button id="like" onclick="increment()"><i class="fa fa-heart"></i></button>
+          </div>
+      </div>
+  </div>
+<br>
+  <button onclick="">Favorites</button>
+<br><br>
+  <div id="popup">
+      <ul>
+          <li><a href="#menu">Menu Details</a></li>
+          <li><a href="#chef">About The Chef</a></li>
+          <li><a href="#dishes">Top Dishes</a></li>
+          <li><a href="#details">Restaurant Details</a></li>
+          <li><a href="#" onclick="toggle()">Go Back</a></li>
+      </ul>
+      </nav>
+      <br>
+      <figure class="popout_img">
+      
+      <h2>${restaurants[selectedRestaurant].restaurant_name}</h2>
+      <img src="${restaurants[selectedRestaurant].location_photo}" id="restLocation">
+      
+      </figure>
+      <br><br><br>
+      
+      <div id="menu">
+          
+          <h2>Menu Details</h2>
+          <img src="${restaurants[selectedRestaurant].menu_photo}" id="restMenu">
+      
+      </div>
+ 
+      <br><br>
+      <div id="chef">
+         
+          <h2>About Chef</h2>
+          <img src="${restaurants[selectedRestaurant].chef_photo}" id="restChef">
+      
+           <p>${chef[(restaurants[selectedRestaurant].chef_id)].first_name}</p>
+      </div>
+      <br>
+      <div id="dishes">
+          
+          <h2>Top Dishes</h2>
+          <img src="${restaurants[selectedRestaurant].food_photo}" id="restPopDish">
+      
+          <p id="restPopDishDescription">${restaurants[selectedRestaurant].popular_dish}</p>
+      </div>
+      <br>
+      <div id="details">
+          
+          <h2>Restaurant Details</h2>
+          <p id="restName"> ${restaurants[selectedRestaurant].restaurant_name} </p>
+          <p id="restAddress"> ${restaurants[selectedRestaurant].address}</p>
+          <p id="restNumber"> ${restaurants[selectedRestaurant].phone_number}</p>
+          <p id="restHours"> ${restaurants[selectedRestaurant].hours}</p>
+          <p id="restWebsite"> <a href="${restaurants[selectedRestaurant].website}">${restaurants[selectedRestaurant].website}</a></p>
+      </div>
+     
+  </div>
+  </div>
+  </div> `
+          const container=document.getElementById('content')
+          container.innerHTML=restTemplate
+          if (selectedRestaurant==24) {
+              selectedRestaurant=0
+          }
+      }
+      function toggle() {
+          let blur=document.getElementById('blur');
+          blur.classList.toggle('active')
+          let popup=document.getElementById('popup');
+          popup.classList.toggle('active')
+      }
+  </script>
+
+     <!-- <div id="main">
+        <div class="container" id="blur"> -->
+
+          <div class="content" id="content">
+            <br><br><br>
+            <div class="start">
+                <button onclick="increment()" id="start"><i class="fa fa-cutlery fa-5x" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
 
     <div class="container-fluid">
         <div class="row" id="foodie_app">
@@ -83,75 +195,15 @@
     </div>
     </div>
     
-    <div>
-        <div class="container" id="blur">
-            <div class="content">
+  
 
-                <a href="#" onclick="toggle()"><img src="#"></a>
+    <div class="footer">
+        <h3> Created and Engineered by the Following Application Developers: </h3>
 
-                <h2>restaurant.name</h2>
-
-                <span>restaurants.cuisine_type/ restaurants.price_range</span>
-
-                <br>
-                <br>
-                <button id="dislike" class="fa fa-close"></i></button><span
-                    style="display:inline-block; width: 20px;"></span>
-                <button id="like"><i class="fa fa-heart"></i></button>
-            </div>
-        </div>
+        <a href="https://github.com/jelissa2007" target="_blank" rel="noopener noreferrer">Jelissa W.</a>
+        <a href="https://github.com/myrriame" target="_blank" rel="noopener noreferrer">Myrriame D.</a>
+        <a href="https://github.com/csolis1" target="_blank" rel="noopener noreferrer">Celida S.</a>
     </div>
-
-    <br>
-    <br>
-    <br>
-
-    <button id="favorites">Access Your Favorites!</button>
-
-
-    <div id="popup">
-        <ul>
-            <li><a href="#menu" class="pop_up">Menu Details</a></li>
-            <li><a href="#chef" class="pop_up">About The Chef</a></li>
-            <li><a href="#dishes" class="pop_up">Top Dishes</a></li>
-            <li><a href="#details" class="pop_up">Restaurant Details</a></li>
-        </ul>
-
-        </nav>
-        <div id="menu">
-            <h2>Menu Details</h2>
-            <img src="menu_photo.menu_photo">
-        </div>
-        <div id="chef">
-            <h2>About Chef</h2>
-            <img src="chef.chef_photo_id">
-            <p>chef.first_name chef.last_name </p>
-            <p>chef.background</p>
-        </div>
-        <div id="dishes">
-            <h2>Top Dishes</h2>
-            <img src="#">
-            <ul>
-                <li> menu.popular_dish </li>
-            </ul>
-        </div>
-        <div id="details">
-            <h2>Restaurant Details</h2>
-            <p> restaurant.name </p>
-            <p> restaurant.address </p>
-            <p> restaurant.phone_number </p>
-            <p> restaurant.hours </p>
-            <p> restaurant.website </p>
-        </div>
-
-        <a href="#" onclick="toggle()">CLOSE POPOUT</a>
-    </div>
-    </div>
-
-
-
-
-
 </body>
 
 </html>
