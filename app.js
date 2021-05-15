@@ -11,15 +11,13 @@ const PORT = process.env.PORT || 3005;
 const db = require('./models');
 console.log(db.Users)
 
+
 const restaurant = require('./models/restaurant')
 const user = require('./models/users')
 
-const users = db.Users.findAll().then(function (user) {
-    console.log(user)
-})
 
-const restaurants = db.Restaurant.findAll().then(function (restaurant) {
-    console.log(restaurant)
+const users = db.Users.findAll().then(function (user) {
+    // console.log(user)
 })
 
 app.use(express.urlencoded());
@@ -29,32 +27,45 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', publicDirectoryPath)
 
-app.get('/', (req, res) => {
-    res.render('home', {
+// main foodie page
+app.get('/', async (req, res) => {
+    const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
+        const dbrestaurant=JSON.stringify(restaurant)
+        console.log(dbrestaurant)
 
-        locals: {
-            users: users
-        }
+        let selectedRestaurant=1
 
-    });
+        const chefs=db.Chefs.findAll().then(function (chef) {
+            const dbchef=JSON.stringify(chef)
+
+
+            res.render('home', { restaurant: dbrestaurant, selectedRestaurant, chef: dbchef });
+        })
+    })
 
 })
 
+// signup page
 app.get('/foodie/signup', (req, res) => {
     res.render('foodie/signup')
 })
 
 app.post('/foodie/signup', async function (req, res, next) {
     // console.log(req.body)
-    const user = await db.Users.create(req.body.users)
+    const user=await db.Users.create(req.body.users)
 
-    res.send(JSON.stringify(req.body));
+    res.redirect('/')
+
 
 });
 
 
 // app.get('/foodie:id', async (req, res) => {
-
+// const favorites = await Restaurant.findAll({
+//     attributes: ["id"], 
+//     where: {liked == TRUE}
+// })
+// const favoritesJSON = JSON.stringify(favorites))
 //     res.render('foodie/details')
 // })
 
