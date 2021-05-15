@@ -12,15 +12,12 @@ const db = require('./models');
 console.log(db.Users)
 
 
+const restaurant = require('./models/restaurant')
+const user = require('./models/users')
+
+
 const users = db.Users.findAll().then(function (user) {
     // console.log(user)
-})
-
-
-
-
-const chefs = db.Chefs.findAll().then(function (chef) {
-    // console.log(chef)
 })
 
 app.use(express.urlencoded());
@@ -30,24 +27,35 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', publicDirectoryPath)
 
+// main foodie page
 app.get('/', async (req, res) => {
-    const restaurants = await db.Restaurant.findAll().then(function (restaurant) {
-        const dbrestaurant = JSON.stringify(restaurant)
+    const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
+        const dbrestaurant=JSON.stringify(restaurant)
         console.log(dbrestaurant)
-        let selectedRestaurant = 8
-        res.render('home', { restaurant, selectedRestaurant });
+
+        let selectedRestaurant=1
+
+        const chefs=db.Chefs.findAll().then(function (chef) {
+            const dbchef=JSON.stringify(chef)
+
+
+            res.render('home', { restaurant: dbrestaurant, selectedRestaurant, chef: dbchef });
+        })
     })
+
 })
 
+// signup page
 app.get('/foodie/signup', (req, res) => {
     res.render('foodie/signup')
 })
 
 app.post('/foodie/signup', async function (req, res, next) {
     // console.log(req.body)
-    const user = await db.Users.create(req.body.users)
+    const user=await db.Users.create(req.body.users)
 
-    res.send(JSON.stringify(req.body));
+    res.redirect('/')
+
 
 });
 
