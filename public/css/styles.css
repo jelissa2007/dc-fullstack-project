@@ -531,3 +531,208 @@ li a{
 	margin-left: auto;
     margin-right: auto;
 }
+
+.container-fluid{
+	  display: flex;
+	  font-family: 'Montserrat Alternates';
+	  flex-direction: row;
+	  justify-content: center;
+  }
+
+
+  /* replicated bootstraps col-12 settings */
+  .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  @media (min-width: 992px) {
+    .col-4 {
+        grid-column: span 4;
+    }
+
+/*price range filter*/
+}
+  #foodie_app{
+	  padding: 10px 15px 0;
+  }
+
+  #foodie_app > section:not(#foodie_header_bar) {
+	  padding-top: 25px;
+	  padding-bottom: 10px;
+	  border-bottom: 2px solid #eee;
+  }
+
+  #foodie_header_bar{
+	  padding-top: 25px;
+	  padding-bottom: 0;
+	
+  }
+
+  #foodie_page_title{
+	  font-size: 15px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+	  margin-left: -15px;
+  }
+
+  .heading{
+	  font-size: 15px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+  }
+
+ .price_button{
+	 width: 100%;
+	 background:transparent;
+	 /*border: 1px solid #ff286c;*/
+	 border-radius: 2px;
+	 padding: 3px; 
+	 color:#ff286c;
+	 font-size:14px;
+	 font-weight: 300;
+	 margin-top: 15px;
+	 margin-bottom: 20px;
+	 cursor: pointer;
+  }
+
+  .price_button:hover, .price_button:focus {
+	background-color: #ff286c;
+	color: #fcedd8;
+  }
+
+  #foodie_price_body .line1{
+	  height: 2px;
+	  width: 100%;
+	  background: #eee;
+  }
+
+
+  #foodie_price_body ul{
+	  padding: 0;
+	  margin-top: 20px;
+	  margin-bottom: 0;
+  }
+
+  #foodie_price_body ul li{
+	  list-style: none;
+	  display: inline-block;
+	  color: #d4d4d4;
+  }
+
+  #foodie_price_body ul li:last-child{
+	  float: right;
+  }
+  
+  /*cusine filter*/
+  .dropbtn {
+	width: 100%;
+	background-color: transparent;
+	border-radius: 2px;
+	color: #eb2b45;
+	padding: 16px;
+	font-size: 14px;
+	font-weight: 300;
+	border: 1px solid #eb2b45;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+	background-color: #efa032;
+	color: #fcedd8;
+  }
+  
+  #myInput {
+	width: 215px;
+	background-image: url('searchicon.png');
+	background-position: 14px 12px;
+	background-repeat: no-repeat;
+	font-size: 16px;
+	padding: 14px 20px 12px 45px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+  }
+  
+  #myInput:focus {outline: 3px solid #ddd;}
+  
+  .dropdown {
+	position: relative;
+	display: inline-block;
+	margin: 5px;
+  }
+  
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f6f6f6;
+	min-width: 230px;
+	max-height: 250px;
+	overflow: auto;
+	border: 1px solid #ddd;
+	z-index: 1;
+  }
+  
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  a{
+	  position: relative;
+
+  }
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+#favorites{
+	background-color: #343A40;
+	border-radius: 4px;  
+	color: #fff;
+	cursor: pointer;
+	padding: 8px 16px;
+	
+  }
+  #favorites:hover{
+	 background-image:     
+	 linear-gradient(
+		to right, 
+		#eb452b,
+		#eb452b 16.65%,
+		#efa032 16.65%,
+		#efa032 33.3%,
+		#46b59b 33.3%,
+		#46b59b 49.95%,
+		#017e7f 49.95%,
+		#017e7f 66.6%,
+		#052939 66.6%,
+		#052939 83.25%,
+		#c11a2b 83.25%,
+		#c11a2b 100%,
+		#eb452b 100%
+	   
+	   
+	   
+	  );
+	animation:slidebg 2s linear infinite;
+  }
+  
+  
+  @keyframes slidebg {
+	to {
+	  background-position:20vw;
+	}
+  }
+  
+  .follow{
+	margin-top: 40px;
+  }
+  
+  .follow a{
+	color: black;
+	padding: 8px 16px;
+	text-decoration: none;
+  }
