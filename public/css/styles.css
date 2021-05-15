@@ -4,15 +4,15 @@ body{
   
   h1{
 	  margin-top: 0;
-	  margin-bottom: 20;
-	  font-size: 13rem;
+	  /* margin-bottom: 20; */
+	  font-size: 8rem;
 	  text-align: center;
-	  height:50vh;
-	  line-height: 50vh;
+	  height:27vh;
+	  line-height: 22vh;
 	  color: #fcedd8;
 	  background: #d52e3f;
 	  font-family: 'Niconne', cursive;
-	  font-weight: 700;
+	  font-weight: 600;
 	  text-shadow: 5px 5px 0px #eb452b, 
 				  10px 10px 0px #efa032, 
 				  15px 15px 0px #46b59b, 
@@ -23,7 +23,118 @@ body{
 				  40px 40px 0px #c11a2b, 
 				  45px 45px 0px #c11a2b;
   }
-  
+ 
+  .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+  @media (min-width: 992px) {
+    .col-4 {
+        grid-column: span 4;
+    }
+}
+  #foodie_app{
+	  padding:  15px 0;
+  }
+
+  #foodie_app > section:not(#foodie_header_bar) {
+	  /* padding-top: 25px; */
+	  /* padding-bottom: 10px; */
+	  border-bottom: 2px solid #eee;
+  }
+
+  #foodie_header_bar{
+	  /* padding-top: 25px; */
+	  padding-bottom: 0;
+	
+  }
+
+  #foodie_page_title{
+	  font-size: 15px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+	  margin-left: -15px;
+  }
+
+  .heading{
+	  font-size: 15px;
+	  font-weight: 500;
+	  text-transform: uppercase;
+  }
+
+  .btn{
+	  width: 100%;
+	  background:transparent;
+	  border: 1px solid #ff286c;
+	  border-radius: 2px;
+	  padding: 3px;
+	  color:#ff286c;
+	  font-size:14px;
+	  font-weight: 300;
+	  margin-top: 15px;
+	  margin-bottom: 20px;
+  }
+
+  .active .btn{
+	  background: #ff286c;
+	  color: #fff;
+  }
+
+  #foodie_price_body .line1{
+	  height: 2px;
+	  width: 100%;
+	  background: #eee;
+  }
+
+  #foodie_price_body .line{
+	  position: absolute;
+	  height: 2px;
+	  width: 45%;
+	  background: #ff286c;
+	  left: 9%;
+  }
+
+  #foodie_price_body .line:before{
+	  position: absolute;
+	  content: '';
+	  display: block;
+	  height: 6px;
+	  width: 6px;
+	  background: #ff286c;
+	  border-radius: 50%;
+	  left: -2px;
+	  top: -2px;
+
+  }
+
+  #foodie_price_body .line:after{
+	position: absolute;
+	content: '';
+	display: block;
+	height: 6px;
+	width: 6px;
+	background: #ff286c;
+	border-radius: 50%;
+	right: -2px;
+	bottom: -2px;
+  }
+
+  #foodie_price_body ul{
+	  padding: 0;
+	  margin-top: 20px;
+	  margin-bottom: 0;
+  }
+
+  #foodie_price_body ul li{
+	  list-style: none;
+	  display: inline-block;
+	  color: #d4d4d4;
+  }
+
+  #foodie_price_body ul li:last-child{
+	  float: right;
+  }
   
   #dislike {
 	background-color:#052939;
@@ -67,7 +178,7 @@ input {
 }
 
 form{
-	background: #f6f5f7;
+	/* background: #f6f5f7; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -80,7 +191,7 @@ form{
 .submit-button {
 	border-radius: 20px;
 	border: 1px solid #000000;
-	background-color: #7fb97f;
+	background-color: #050505;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -101,7 +212,7 @@ cursor: pointer;
   justify-content: left;
   align-items: center;
   transition: 0.5s;
-  padding: 20px;
+  /* padding: 20px; */
   
 }
 .container#blur.active
@@ -126,11 +237,11 @@ h2
   max-width: 100%;
   display: block;
 }
-a{
+li a{
   position: relative;
   padding: 5px 20px;
   display: inline-block;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   text-decoration: none;
   color: #fff;
   background: #111;
@@ -141,15 +252,17 @@ a{
   top: 40%;
   Left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
+  width: 684px;
   height: 400px;
-  padding: 50px;
+  /* padding: 50px; */
   box-shadow: 0 5px 30px rgba(0,0,0,.30);
   background: #fff;
   visibility: hidden;
   opacity: 0;
   transition: 0.5s;
   overflow: scroll;
+  border: 1px solid black;
+  text-align: center;
 }
 #popup.active
 {
@@ -160,4 +273,250 @@ a{
 }
 /*  */
 
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 8%;
+	background-color: #D52E3F;
+	/* font-family: 'Mouse Memoirs'; */
+	color: #fcedd8;
+	text-align: center;
+	font-size: 15px;			
+ }
 
+
+ /* Menu Bar */
+ ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+
+	position: sticky;
+	top: 0;
+	width: 100%;
+	
+  }
+
+  li{
+	display: inline;
+	float: left;
+  }
+
+  li a {
+	display: block;
+	color: white;
+	text-align: center;
+	/* padding: 14px 16px; */
+	text-decoration: none;
+  }
+
+  /* page css */
+  #foodPic{
+	width: 40%;
+	height: 40%;
+	
+  }
+
+  
+
+  #restLocation{
+	width: 70%;
+	height: 70%;
+  }
+
+  #restChef{
+	width: 70%;
+	height: 70%;
+  }
+
+  #restPopDish{
+	width: 70%;
+	height: 70%;
+  }
+
+  #restMenu{
+	  width: 70%;
+	  height: 70%;
+  }
+
+  #price{
+	border: solid #0000007e 1px;
+	font-size: medium;
+	border-radius: 2px;
+	background-color: #0000009a;
+	color: #ffffff;
+  }
+
+  #cuisine_type{
+	border: solid #0000007e 1px;
+	font-size: medium;
+	border-radius: 2px;
+	background-color: #ffffff9a;
+	color: #000000;
+  }
+
+ 
+
+  #start {
+	  align-content: center;
+	width: 160px;
+	height: 160px;
+	line-height: 50px;
+	display: block;
+	position: relative;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	border: 1px solid rgb(0, 0, 0);
+	text-align: center;
+	display: inline-block;
+	position: relative;
+	z-index: 10;
+	color: rgb(0, 0, 0);
+	transition: all .2s ease-in-out;
+  }
+  
+  #start:hover {
+	color: #fff;
+	width: 170px;
+	height: 170px;
+  }
+  
+  #start:after {
+	  position: absolute !important;
+	content: "";
+	width: 152px;
+	height: 152px;
+	display: block;
+	position: relative;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	right: 8px;
+	top: 8px;
+	background-color: #eb452b;
+	visibility: hidden;
+	opacity: 0;
+	-moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	opacity: 1\9;
+	visibility: visible\9;
+	display: none\9;
+	-moz-transform: scale(0.5, 0.5);
+	-ms-transform: scale(0.5, 0.5);
+	-webkit-transform: scale(0.5, 0.5);
+	transform: scale(0.5, 0.5);
+	z-index: -1;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+  }
+  
+  #start:hover:after {
+	visibility: visible;
+	opacity: 1;
+	display: block\9;
+	-moz-transform: scale(1, 1);
+	-ms-transform: scale(1, 1);
+	-webkit-transform: scale(1, 1);
+	transform: scale(1, 1);
+  }
+
+  .start{
+	text-align: center;
+  }
+
+  figure.popout_img {
+	position: relative;
+	background: #ffffff28;
+	text-align: center;
+	/* box-shadow: 0 0 5px rgba(0, 0, 0, 0.15); */
+  }
+  figure.popout_img * {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 0.35s ease-in-out;
+	transition: all 0.35s ease-in-out;
+  }
+  figure.popout_img img {
+	max-width: 100%;
+	vertical-align: top;
+  }
+  figure.popout_img h2 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+  
+	font-size: 34px;
+	color: rgb(0, 0, 0);
+	
+	background: rgba(51, 51, 51, 0);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+	-webkit-transform: translate(-50%, -50%) scale(0);
+	transform: translate(-50%, -50%) scale(0);
+	transition: all 300ms 0ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  
+  
+  
+  
+  figure.popout_img.navy {
+	background-color: #ffffff;
+  }
+  figure.popout_img.navy h2 {
+	color: #000000;
+  }
+  figure.popout_img:hover img,
+  figure.popout_img.hover img {
+	opacity: 0.3;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+  }
+  figure.popout_img:hover h2,
+  figure.popout_img.hover h2 {
+	-webkit-transform: translate(-50%, -50%) scale(1);
+	transform: translate(-50%, -50%) scale(1);
+	transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+
+  #card {
+	position: relative;
+	
+	display: block;
+	margin: auto;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+#upper-side a img {
+	
+	display: block;
+	color: #fff;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+
+#lower-side {
+	width: 40%;
+	background: #fff;
+	display: block;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+#content{
+	margin-left: auto;
+    margin-right: auto;
+}
