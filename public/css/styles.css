@@ -24,6 +24,17 @@ body{
 				  45px 45px 0px #c11a2b;
   }
 
+
+
+  .container-fluid{
+	  display: flex;
+	  font-family: 'Montserrat Alternates';
+	  flex-direction: row;
+	  justify-content: center;
+  }
+
+
+  /* replicated bootstraps col-12 settings */
   .row {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -33,6 +44,8 @@ body{
     .col-4 {
         grid-column: span 4;
     }
+
+/*price range filter*/
 }
   #foodie_app{
 	  padding: 10px 15px 0;
@@ -63,22 +76,23 @@ body{
 	  text-transform: uppercase;
   }
 
-  .btn{
-	  width: 100%;
-	  background:transparent;
-	  border: 1px solid #ff286c;
-	  border-radius: 2px;
-	  padding: 3px;
-	  color:#ff286c;
-	  font-size:14px;
-	  font-weight: 300;
-	  margin-top: 15px;
-	  margin-bottom: 20px;
+ .price_button{
+	 width: 100%;
+	 background:transparent;
+	 /*border: 1px solid #ff286c;*/
+	 border-radius: 2px;
+	 padding: 3px; 
+	 color:#ff286c;
+	 font-size:14px;
+	 font-weight: 300;
+	 margin-top: 15px;
+	 margin-bottom: 20px;
+	 cursor: pointer;
   }
 
-  .active .btn{
-	  background: #ff286c;
-	  color: #fff;
+  .price_button:hover, .price_button:focus {
+	background-color: #ff286c;
+	color: #fcedd8;
   }
 
   #foodie_price_body .line1{
@@ -87,38 +101,6 @@ body{
 	  background: #eee;
   }
 
-  #foodie_price_body .line{
-	  position: absolute;
-	  height: 2px;
-	  width: 45%;
-	  background: #ff286c;
-	  left: 9%;
-  }
-
-  #foodie_price_body .line:before{
-	  position: absolute;
-	  content: '';
-	  display: block;
-	  height: 6px;
-	  width: 6px;
-	  background: #ff286c;
-	  border-radius: 50%;
-	  left: -2px;
-	  top: -2px;
-
-  }
-
-  #foodie_price_body .line:after{
-	position: absolute;
-	content: '';
-	display: block;
-	height: 6px;
-	width: 6px;
-	background: #ff286c;
-	border-radius: 50%;
-	right: -2px;
-	bottom: -2px;
-  }
 
   #foodie_price_body ul{
 	  padding: 0;
@@ -136,6 +118,75 @@ body{
 	  float: right;
   }
   
+  /*cusine filter*/
+  .dropbtn {
+	width: 100%;
+	background-color: transparent;
+	border-radius: 2px;
+	color: #eb2b45;
+	padding: 16px;
+	font-size: 14px;
+	font-weight: 300;
+	border: 1px solid #eb2b45;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+	background-color: #efa032;
+	color: #fcedd8;
+  }
+  
+  #myInput {
+	width: 215px;
+	background-image: url('searchicon.png');
+	background-position: 14px 12px;
+	background-repeat: no-repeat;
+	font-size: 16px;
+	padding: 14px 20px 12px 45px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+  }
+  
+  #myInput:focus {outline: 3px solid #ddd;}
+  
+  .dropdown {
+	position: relative;
+	display: inline-block;
+	margin: 5px;
+  }
+  
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f6f6f6;
+	min-width: 230px;
+	max-height: 250px;
+	overflow: auto;
+	border: 1px solid #ddd;
+	z-index: 1;
+  }
+  
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  a{
+	  position: relative;
+
+  }
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+
+
+
+  /* dislike and like button design */
   #dislike {
 	background-color:#052939;
 	border: none;
@@ -198,8 +249,61 @@ form{
 	padding: 12px 45px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-cursor: pointer;
+	cursor: pointer;
 }
+
+
+
+	
+#favorites{
+	background-color: #343A40;
+	border-radius: 4px;  
+	color: #fff;
+	cursor: pointer;
+	padding: 8px 16px;
+	
+  }
+  #favorites:hover{
+	 background-image:     
+	 linear-gradient(
+		to right, 
+		#eb452b,
+		#eb452b 16.65%,
+		#efa032 16.65%,
+		#efa032 33.3%,
+		#46b59b 33.3%,
+		#46b59b 49.95%,
+		#017e7f 49.95%,
+		#017e7f 66.6%,
+		#052939 66.6%,
+		#052939 83.25%,
+		#c11a2b 83.25%,
+		#c11a2b 100%,
+		#eb452b 100%
+	   
+	   
+	   
+	  );
+	animation:slidebg 2s linear infinite;
+  }
+  
+  
+  @keyframes slidebg {
+	to {
+	  background-position:20vw;
+	}
+  }
+  
+  .follow{
+	margin-top: 40px;
+  }
+  
+  .follow a{
+	color: black;
+	padding: 8px 16px;
+	text-decoration: none;
+  }
+  
 
 /* pop out */
 
@@ -237,7 +341,7 @@ h2
   max-width: 100%;
   display: block;
 }
-a{
+.pop_up a{
   position: relative;
   padding: 5px 20px;
   display: inline-block;

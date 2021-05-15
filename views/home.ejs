@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Niconne" />
     <link rel="stylesheet" href="css/styles.css">
     <script src="/js/app.js"></script>
@@ -36,28 +35,54 @@
               </span>
               <div class="row">
                 <div class="col-4">
-                  <button class="btn" type="button">&dollar;</button>
-                </div>
-                <div class="col-4 active">
-                  <button class="btn" type="button">&dollar;&dollar;</button>
+                  <button class="price_button" type="button">&dollar;</button>
                 </div>
                 <div class="col-4">
-                  <button class="btn" type="button">&dollar;&dollar;&dollar;</button>
+                  <button class="price_button"type="button">&dollar;&dollar;</button>
+                </div>
+                <div class="col-4">
+                  <button class="price_button" type="button">&dollar;&dollar;&dollar;</button>
                 </div>
               </div>
-              <div class="line"></div>
-              <div class="line1"></div>
-              <div>
-                <ul>
-                  <li>$25</li>
-                  <li>$75</li>
-                </ul>
-              </div>
-            </div>
           </section>
+
+          <div class="dropdown">
+            <span class="heading">
+                By Cuisine
+              </span>
+            <button onclick="myFunction()" class="dropbtn">Cuisine Type</button>
+            <div id="myDropdown" class="dropdown-content">
+              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+              <a href="#latin">Latin</a>
+              <a href="#caribbean">Caribbean</a>
+              <a href="#vegan">Vegan</a>
+              <a href="#vegitarian">Vegetarian</a>
+              <a href="#asian">Asian</a>
+              <a href="#vietnamese">Vietnamese</a>
+              <a href="#japanese">Japanese</a>
+              <a href="#cajun">Cajun</a>
+              <a href="#soulfood">Soul Food</a>
+              <a href="#southern">Southern</a>
+              <a href="#breakfast">Breakfast</a>
+              <a href="#brunch">Brunch</a>
+              <a href="#mexican">Mexican</a>
+              <a href="#african">African</a>
+              <a href="#mediterranean">Mediterranean</a>
+              <a href="#bar">Bar</a>
+              <a href="#casual">Casual</a>
+              <a href="#fusion">Fusion</a>
+              <a href="#seafood">Seafood</a>
+              <a href="#american">American</a>
+              <a href="#bbq">BBQ</a>
+              <a href="#cafe">Cafe</a>
+              <a href="#bakery">Bakery</a>
+              <a href="#french">French</a>
+              <a href="#italian">Italian</a>
+            </div>
         </div>
     </div>
-
+    </div>
+    
     <div>
         <div class="container" id="blur">
             <div class="content">
@@ -86,10 +111,10 @@
 
     <div id="popup">
         <ul>
-            <li><a href="#menu">Menu Details</a></li>
-            <li><a href="#chef">About The Chef</a></li>
-            <li><a href="#dishes">Top Dishes</a></li>
-            <li><a href="#details">Restaurant Details</a></li>
+            <li><a href="#menu" class="pop_up">Menu Details</a></li>
+            <li><a href="#chef" class="pop_up">About The Chef</a></li>
+            <li><a href="#dishes" class="pop_up">Top Dishes</a></li>
+            <li><a href="#details" class="pop_up">Restaurant Details</a></li>
         </ul>
 
         </nav>
