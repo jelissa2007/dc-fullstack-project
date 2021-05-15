@@ -7,6 +7,3 @@ function toggle() {
     let popup=document.getElementById('popup');
     popup.classList.toggle('active')
 }
-
-
-

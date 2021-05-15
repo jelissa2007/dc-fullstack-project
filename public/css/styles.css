@@ -271,7 +271,18 @@ li a{
   opacity: 1;
   transition: 0.5s;
 }
-/*  */
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #D52E3F;
+	font-family: 'Mouse Memoirs';
+	color: #fcedd8;
+	text-align: center;
+	font-size: 20px;			
+ }
+
 
 .footer {
 	position: fixed;
