@@ -13,190 +13,229 @@
     <h1>Foodie</h1>
 
     <script>
-      let selectedRestaurant= <%= selectedRestaurant %>;
-      let restaurants= <%- restaurant%>;
-      let chef= <%- chef%>;
-      function increment() {
-          selectedRestaurant++
-          let restTemplate=`
-          <div id="main">
-          <br>
-          <div class="container" id="blur">
-          <div class="content" id="content">
-              <div id='card'>
-      
-              <div id="here"></div>
-              <div id='upper-side'>
-          <a href="#here"> <img src="${restaurants[selectedRestaurant].food_photo}" onclick="toggle()"
-                      id="foodPic"></a>
-          </div>
-          <div id='lower-side'>            
-          <h2 id="restName">${restaurants[selectedRestaurant].restaurant_name}</h2>
-          <span id="restCuisine"><span id="cuisine_type">${restaurants[selectedRestaurant].cuisine_type}</span> <span id="price">${chef[(restaurants[selectedRestaurant].chef_id)].last_name}</span></span>
-          <br><br>
-          
-         </div>
-         <br>
-          <button id="dislike" onclick="increment()"><i class="fa fa-close"></i></button><span
-                  style="display:inline-block; width: 20px;"></span>
-              <button id="like" onclick="increment()"><i class="fa fa-heart"></i></button>
-          </div>
-      </div>
-  </div>
-<br>
-  <button onclick="">Favorites</button>
-<br><br>
-  <div id="popup">
-      <ul>
-          <li><a href="#menu">Menu Details</a></li>
-          <li><a href="#chef">About The Chef</a></li>
-          <li><a href="#dishes">Top Dishes</a></li>
-          <li><a href="#details">Restaurant Details</a></li>
-          <li><a href="#" onclick="toggle()">Go Back</a></li>
-      </ul>
-      </nav>
-      <br>
-      <figure class="popout_img">
-      
-      <h2>${restaurants[selectedRestaurant].restaurant_name}</h2>
-      <img src="${restaurants[selectedRestaurant].location_photo}" id="restLocation">
-      
-      </figure>
-      <br><br><br>
-      
-      <div id="menu">
-          
-          <h2>Menu Details</h2>
-          <img src="${restaurants[selectedRestaurant].menu_photo}" id="restMenu">
-      
-      </div>
- 
-      <br><br>
-      <div id="chef">
-         
-          <h2>About Chef</h2>
-          <img src="${restaurants[selectedRestaurant].chef_photo}" id="restChef">
-      
-           <p>${chef[(restaurants[selectedRestaurant].chef_id)].first_name}</p>
-      </div>
-      <br>
-      <div id="dishes">
-          
-          <h2>Top Dishes</h2>
-          <img src="${restaurants[selectedRestaurant].food_photo}" id="restPopDish">
-      
-          <p id="restPopDishDescription">${restaurants[selectedRestaurant].popular_dish}</p>
-      </div>
-      <br>
-      <div id="details">
-          
-          <h2>Restaurant Details</h2>
-          <p id="restName"> ${restaurants[selectedRestaurant].restaurant_name} </p>
-          <p id="restAddress"> ${restaurants[selectedRestaurant].address}</p>
-          <p id="restNumber"> ${restaurants[selectedRestaurant].phone_number}</p>
-          <p id="restHours"> ${restaurants[selectedRestaurant].hours}</p>
-          <p id="restWebsite"> <a href="${restaurants[selectedRestaurant].website}">${restaurants[selectedRestaurant].website}</a></p>
-      </div>
-     
-  </div>
-  </div>
-  </div> `
-          const container=document.getElementById('content')
-          container.innerHTML=restTemplate
-          if (selectedRestaurant==24) {
-              selectedRestaurant=0
-          }
-      }
-      function toggle() {
-          let blur=document.getElementById('blur');
-          blur.classList.toggle('active')
-          let popup=document.getElementById('popup');
-          popup.classList.toggle('active')
-      }
-  </script>
+        let selectedRestaurant= <%= selectedRestaurant %>;
+        let restaurants= <%- restaurant%>;
+        let chef= <%- chef%>;
+        let user_id= <%= user_id %>;
+        function increment() {
+            selectedRestaurant++
+            let restTemplate=`
+            <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-2">
 
-     <!-- <div id="main">
+                    <div class="container-fluid">
+                        <div id="foodie_app">
+
+                            <section id="foodie_header_bar">
+                                <div>
+                                    
+                                    <div id="foodie_page_title">
+                                        <i class="fa fa-chevron-left"></i> Filters
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="foodie_price_body">
+                                <div>
+                                    <span class="heading">
+                                        By Price
+                                    </span>
+                                    <div>
+                                        <div>
+                                            <button class="price_button" type="button">&dollar;</button>
+                                        </div>
+                                        <div>
+                                            <button class="price_button" type="button">&dollar;&dollar;</button>
+                                        </div>
+                                        <div>
+                                            <button class="price_button" type="button">&dollar;&dollar;&dollar;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <div class="dropdown">
+                                <span class="heading">
+                                    By Cuisine
+                                </span>
+                                <button onclick="myFunction()" class="dropbtn">Cuisine Type</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                    <a href="#latin">Latin</a>
+                                    <a href="#caribbean">Caribbean</a>
+                                    <a href="#vegan">Vegan</a>
+                                    <a href="#vegitarian">Vegetarian</a>
+                                    <a href="#asian">Asian</a>
+                                    <a href="#vietnamese">Vietnamese</a>
+                                    <a href="#japanese">Japanese</a>
+                                    <a href="#cajun">Cajun</a>
+                                    <a href="#soulfood">Soul Food</a>
+                                    <a href="#southern">Southern</a>
+                                    <a href="#breakfast">Breakfast</a>
+                                    <a href="#brunch">Brunch</a>
+                                    <a href="#mexican">Mexican</a>
+                                    <a href="#african">African</a>
+                                    <a href="#mediterranean">Mediterranean</a>
+                                    <a href="#bar">Bar</a>
+                                    <a href="#casual">Casual</a>
+                                    <a href="#fusion">Fusion</a>
+                                    <a href="#seafood">Seafood</a>
+                                    <a href="#american">American</a>
+                                    <a href="#bbq">BBQ</a>
+                                    <a href="#cafe">Cafe</a>
+                                    <a href="#bakery">Bakery</a>
+                                    <a href="#french">French</a>
+                                    <a href="#italian">Italian</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="form-signin" action="/foodie/favorites" method="post">
+                <div class="col align-self-center">
+                    
+                    <br>
+                        <input type="text" class="hide" id="${user_id}" name="user_id" value="${user_id}">
+                        <input type="text" class="hide" id="${restaurants[selectedRestaurant].id}" name="restaurant_id"
+                            value="${restaurants[selectedRestaurant].id}">
+
+                        <div id="main">
+
+
+                            <div class="container1" id="blur">
+
+                                <div class="content" id="content">
+                                
+                                    <div id='card'>
+                                        
+                                        <div id='upper-side'>
+                                            <img src="${restaurants[selectedRestaurant].food_photo}"
+                                                    onclick="toggle()" id="foodPic">
+                                        </div>
+
+                                        <div id='lower-side'>
+                                            <h2 id="restName">${restaurants[selectedRestaurant].restaurant_name}</h2>
+                                            <span id="restCuisine"><span
+                                                    id="cuisine_type">${restaurants[selectedRestaurant].cuisine_type}</span>
+                                                <span
+                                                    id="price">${chef[(restaurants[selectedRestaurant].chef_id)].last_name}</span></span>
+                                            <br>
+                                        </div>
+
+                                        <br>
+                                        <button id="dislike" onclick="increment()"><i
+                                                class="fa fa-close"></i></button><span
+                                            style="display:inline-block; width: 20px;"></span>
+                                        <button id="like" type="submit"><i class="fa fa-heart"></i></button><span
+                                            style="display:inline-block; width: 20px;"></span>
+                                        <button id="next" onclick="increment()"><i class="fa fa-arrow-circle-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                            <div id="popup">
+                                <nav>
+                                    <ul>
+                                        <li><a href="#menu">Menu Details</a></li>
+                                        <li><a href="#chef">About The Chef</a></li>
+                                        <li><a href="#dishes">Top Dishes</a></li>
+                                        <li><a href="#details">Restaurant Details</a></li>
+                                        <li><a href="#" onclick="toggle()">Go Back</a></li>
+                                    </ul>
+                                </nav>
+                                <br>
+                                <figure class="popout_img">
+
+                                    <h2>${restaurants[selectedRestaurant].restaurant_name}</h2>
+                                    <img src="${restaurants[selectedRestaurant].location_photo}" id="restLocation">
+
+                                </figure>
+                                <br><br><br>
+
+                                <div id="menu">
+
+                                    <h2>Menu Details</h2>
+                                    <img src="${restaurants[selectedRestaurant].menu_photo}" id="restMenu">
+
+                                </div>
+
+                                <br><br>
+
+                                <div id="chef">
+
+                                    <h2>About Chef</h2>
+                                    <img src="${restaurants[selectedRestaurant].chef_photo}" id="restChef">
+                                    <p>${chef[(restaurants[selectedRestaurant].chef_id)].first_name}</p>
+
+                                </div>
+
+                                <br>
+
+                                <div id="dishes">
+
+                                    <h2>Top Dishes</h2>
+                                    <img src="${restaurants[selectedRestaurant].food_photo}" id="restPopDish">
+                                    <p id="restPopDishDescription">${restaurants[selectedRestaurant].popular_dish}</p>
+
+                                </div>
+
+                                <br>
+
+                                <div id="details">
+
+                                    <h2>Restaurant Details</h2>
+                                    <p id="restName"> ${restaurants[selectedRestaurant].restaurant_name} </p>
+                                    <p id="restAddress"> ${restaurants[selectedRestaurant].address}</p>
+                                    <p id="restNumber"> ${restaurants[selectedRestaurant].phone_number}</p>
+                                    <p id="restHours"> ${restaurants[selectedRestaurant].hours}</p>
+                                    <p id="restWebsite"> <a
+                                            href="${restaurants[selectedRestaurant].website}">${restaurants[selectedRestaurant].website}</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col justify-content-end">
+                    <br>
+                    <button onclick="" id="favorites">Your Favorites!</button>
+                </div>
+            </div>
+        </div>`
+            const container=document.getElementById('content')
+            container.innerHTML=restTemplate
+            if (selectedRestaurant==24) {
+                selectedRestaurant=0
+            }
+        }
+        function toggle() {
+            let blur=document.getElementById('blur');
+            blur.classList.toggle('active')
+            let popup=document.getElementById('popup');
+            popup.classList.toggle('active')
+        }
+    </script>
+
+    <!-- <div id="main">
         <div class="container" id="blur"> -->
 
-          <div class="content" id="content">
-            <br><br><br>
-            <div class="start">
-                <button onclick="increment()" id="start"><i class="fa fa-cutlery fa-5x" aria-hidden="true"></i>
-                </button>
-            </div>
-        </div>
-
-    <div class="container-fluid">
-        <div class="row" id="foodie_app">
-      
-          <section class="col-12" id="foodie_header_bar">
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-chevron-left"></i>
-              </div>
-              <div class="col-10" id="foodie_page_title">
-                Filters
-              </div>
-            </div>
-          </section>
-      
-          <section class="col-12" id="foodie_price_body">
-            <div>
-              <span class="heading">
-                By Price
-              </span>
-              <div class="row">
-                <div class="col-4">
-                  <button class="price_button" type="button">&dollar;</button>
-                </div>
-                <div class="col-4">
-                  <button class="price_button"type="button">&dollar;&dollar;</button>
-                </div>
-                <div class="col-4">
-                  <button class="price_button" type="button">&dollar;&dollar;&dollar;</button>
-                </div>
-              </div>
-          </section>
-
-          <div class="dropdown">
-            <span class="heading">
-                By Cuisine
-              </span>
-            <button onclick="myFunction()" class="dropbtn">Cuisine Type</button>
-            <div id="myDropdown" class="dropdown-content">
-              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-              <a href="#latin">Latin</a>
-              <a href="#caribbean">Caribbean</a>
-              <a href="#vegan">Vegan</a>
-              <a href="#vegitarian">Vegetarian</a>
-              <a href="#asian">Asian</a>
-              <a href="#vietnamese">Vietnamese</a>
-              <a href="#japanese">Japanese</a>
-              <a href="#cajun">Cajun</a>
-              <a href="#soulfood">Soul Food</a>
-              <a href="#southern">Southern</a>
-              <a href="#breakfast">Breakfast</a>
-              <a href="#brunch">Brunch</a>
-              <a href="#mexican">Mexican</a>
-              <a href="#african">African</a>
-              <a href="#mediterranean">Mediterranean</a>
-              <a href="#bar">Bar</a>
-              <a href="#casual">Casual</a>
-              <a href="#fusion">Fusion</a>
-              <a href="#seafood">Seafood</a>
-              <a href="#american">American</a>
-              <a href="#bbq">BBQ</a>
-              <a href="#cafe">Cafe</a>
-              <a href="#bakery">Bakery</a>
-              <a href="#french">French</a>
-              <a href="#italian">Italian</a>
-            </div>
+    <div class="content" id="content">
+        <br><br><br>
+        <div class="start">
+            <button onclick="increment()" id="start"><i class="fa fa-cutlery fa-5x" aria-hidden="true"></i>
+            </button>
         </div>
     </div>
-    </div>
-    
+
+
     <div class="footer">
-        <h3> Created and Engineered by the Following Application Developers: </h3>
+        <!-- <p> Created and Engineered by the Following Application Developers: </p> -->
 
         <a href="https://github.com/jelissa2007" target="_blank" rel="noopener noreferrer">Jelissa W.</a>
         <a href="https://github.com/myrriame" target="_blank" rel="noopener noreferrer">Myrriame D.</a>

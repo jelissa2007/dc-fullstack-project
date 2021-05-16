@@ -1,5 +1,5 @@
 'use strict';
-module.exports = {
+module.exports={
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('User_restaurants', {
       id: {
@@ -11,7 +11,7 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER
       },
-      resaurant_id: {
+      restaurant_id: {
         type: Sequelize.INTEGER
       },
       createdAt: {
