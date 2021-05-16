@@ -1,4 +1,3 @@
-
 // popout function 
 // function toggle() {
 //     let blur=document.getElementById('blur');
@@ -29,7 +28,9 @@ function filterFunction() {
     }
   }
 }
-<<<<<<< HEAD
+// /////stop click of favorites button
 
-=======
->>>>>>> 0ac8fc97f075591418f54a17412defd4d2ac3f60
+function myFunction() {
+document.getElementsById("favorites")[0].removeAttribute("onclick");
+
+};
