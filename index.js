@@ -24,17 +24,18 @@ app.set('views', publicDirectoryPath)
 
 // main foodie page
 app.get('/', async (req, res) => {
+
     const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
         const dbrestaurant=JSON.stringify(restaurant)
         // console.log(dbrestaurant)
 
         let selectedRestaurant=0
-
+        const user_id=14
         const chefs=db.Chefs.findAll().then(function (chef) {
             const dbchef=JSON.stringify(chef)
 
 
-            res.render('home', { restaurant: dbrestaurant, selectedRestaurant, chef: dbchef });
+            res.render('home', { restaurant: dbrestaurant, selectedRestaurant, chef: dbchef, user_id: user_id });
         })
     })
 
@@ -60,11 +61,15 @@ app.get('/foodie/signedin', (req, res) => {
 })
 
 // favorites route
-// app.get('/foodie:id', async (req, res) => {
-// const favorites = await Restaurant.findAll({
-//     attributes: ["id"], 
-//     where: {liked == TRUE}
-// })
+app.post('/foodie/favorites', async (req, res) => {
+    console.log('favorites add', req.body)
+    const { user_id, restaurant_id }=req.body
+    const favorite=await db.User_restaurant.create({
+        user_id, restaurant_id
+    });
+    res.statusCode
+
+})
 // const favoritesJSON = JSON.stringify(favorites))
 //     res.render('foodie/details')
 // })
