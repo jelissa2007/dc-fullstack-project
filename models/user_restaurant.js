@@ -1,8 +1,8 @@
 'use strict';
 const {
   Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+}=require('sequelize');
+module.exports=(sequelize, DataTypes) => {
   class User_restaurant extends Model {
     /**
      * Helper method for defining associations.
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   User_restaurant.init({
     user_id: DataTypes.INTEGER,
-    resaurant_id: DataTypes.INTEGER
+    restaurant_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User_restaurant',
