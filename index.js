@@ -1,4 +1,5 @@
 // const { Router } = require('express')
+// const { Router } = require('express')
 const express=require('express')
 const bodyParser=require('body-parser');
 const path=require('path')
@@ -11,11 +12,6 @@ const db=require('./models');
 console.log(db.Users)
 
 
-const users=db.Users.findAll().then(function (user) {
-    // console.log(user)
-})
-
-
 app.use(express.urlencoded());
 app.use(express.static('public'));
 
@@ -26,11 +22,13 @@ app.set('views', publicDirectoryPath)
 app.get('/', async (req, res) => {
 
     const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
+
         const dbrestaurant=JSON.stringify(restaurant)
-        // console.log(dbrestaurant)
 
         let selectedRestaurant=0
+
         const user_id=14
+
         const chefs=db.Chefs.findAll().then(function (chef) {
             const dbchef=JSON.stringify(chef)
 
@@ -47,37 +45,42 @@ app.get('/foodie/signup', (req, res) => {
 })
 
 app.post('/foodie/signup', async function (req, res, next) {
-    // console.log(req.body)
+
     const user=await db.Users.create(req.body.users)
 
-    res.redirect('/foodie/signedin')
+    res.redirect('/')
 
 
 });
 
-app.get('/foodie/signedin', (req, res) => {
-    res.render('foodie/signed-up')
-    res.redirect('/')
-})
-
 // favorites route
-app.post('/foodie/favorites', async (req, res) => {
+app.post('/foodie/favorites', async (req, res, next) => {
+
     console.log('favorites add', req.body)
+
     const { user_id, restaurant_id }=req.body
+
     const favorite=await db.User_restaurant.create({
         user_id, restaurant_id
     });
-    res.statusCode
+
+    res.send()
 
 })
-// const favoritesJSON = JSON.stringify(favorites))
-//     res.render('foodie/details')
-// })
 
-// app.get('/foodie', async (req, res) => {
-//     const foodie = await Foodie.find({})
-//     res.render('foodie/favorites', { foodie })
-// })
+
+app.get('/foodie/favorites', async (req, res) => {
+    const favorites=await db.User_restaurant.findAll().then(function (favorite) {
+        const dbfavorite=JSON.stringify(favorite)
+
+        const rest_user=db.Restaurant.findAll().then(function (rest) {
+            const dbrest_user=JSON.stringify(rest)
+
+
+            res.render('foodie/index', { faves: dbfavorite, rest: dbrest_user });
+        })
+    })
+})
 
 
 
