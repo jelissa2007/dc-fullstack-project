@@ -1,5 +1,4 @@
 // const { Router } = require('express')
-// const { Router } = require('express')
 const express=require('express')
 const bodyParser=require('body-parser');
 const path=require('path')
@@ -63,13 +62,10 @@ app.post('/foodie/favorites', async (req, res, next) => {
     const favorite=await db.User_restaurant.create({
         user_id, restaurant_id
     });
-<<<<<<< HEAD
 
     res.statusCode
-=======
->>>>>>> 6529e3f01e23b4b3078edf16ee7a70d9a91e5de4
 
-    res.send()
+
 
 })
 
@@ -86,7 +82,6 @@ app.get('/foodie/favorites', async (req, res) => {
         })
     })
 })
-<<<<<<< HEAD
 
 
 app.get('/foodie/favorites', async (req, res) => {
@@ -101,8 +96,6 @@ app.get('/foodie/favorites', async (req, res) => {
         })
     })
 })
-=======
->>>>>>> 6529e3f01e23b4b3078edf16ee7a70d9a91e5de4
 
 
 
