@@ -24,23 +24,12 @@ body{
 				  45px 45px 0px #c11a2b;
   }
  
-  /* .row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 20px;
-  }
-  @media (min-width: 992px) {
-    .col-4 {
-        grid-column: span 4;
-    }
-} */
+ 
   #foodie_app{
 	  padding:  15px 0;
   }
 
   #foodie_app > section:not(#foodie_header_bar) {
-	  /* padding-top: 25px; */
-	  /* padding-bottom: 10px; */
 	  border-bottom: 2px solid #eee;
   }
 
@@ -144,6 +133,7 @@ body{
 	border-radius: 50%;
 	font-size: 16px;
 	cursor: pointer;
+	outline: none;
   }
   
   #dislike:hover {
@@ -159,7 +149,7 @@ body{
 	border-radius: 55%;
 	font-size: 16px;
 	cursor: pointer;
-	
+	outline: none;
   
   }
   
@@ -176,6 +166,7 @@ body{
 	border-radius: 50%;
 	font-size: 16px;
 	cursor: pointer;
+	outline: none;
   }
 
   #next:hover{
@@ -292,7 +283,7 @@ li a{
 	bottom: 0;
 	width: 100%;
 	background-color: #D52E3F;
-	font-family: 'Mouse Memoirs';
+	/* font-family: 'Mouse Memoirs'; */
 	color: #fcedd8;
 	text-align: center;
 	font-size: 10px;			
@@ -395,10 +386,11 @@ li a{
  
 
   #start {
+	  top: 90px;
 	  align-content: center;
 	width: 160px;
 	height: 160px;
-	line-height: 50px;
+	/* line-height: 50px; */
 	display: block;
 	position: relative;
 	-moz-border-radius: 50%;
@@ -411,10 +403,11 @@ li a{
 	z-index: 10;
 	color: rgb(0, 0, 0);
 	transition: all .2s ease-in-out;
+	outline: none;
   }
   
   #start:hover {
-	color: #fff;
+	color: rgb(0, 0, 0);
 	width: 170px;
 	height: 170px;
   }
@@ -594,19 +587,7 @@ li a{
   }
 
 
-  /* replicated bootstraps col-12 settings */
-  /* .row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 20px;
-  }
-  @media (min-width: 992px) {
-    .col-4 {
-        grid-column: span 4;
-    } */
-
-/*price range filter*/
-/* } */
+ 
   #foodie_app{
 	  padding: 10px 15px 0;
   }
