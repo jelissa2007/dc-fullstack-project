@@ -23,10 +23,8 @@
             <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-
                     <div class="container-fluid">
                         <div id="foodie_app">
-
                             <section id="foodie_header_bar">
                                 <div>
                                     
@@ -35,7 +33,6 @@
                                     </div>
                                 </div>
                             </section>
-
                             <section id="foodie_price_body">
                                 <div>
                                     <span class="heading">
@@ -54,7 +51,6 @@
                                     </div>
                                 </div>
                             </section>
-
                             <div class="dropdown">
                                 <span class="heading">
                                     By Cuisine
@@ -88,7 +84,6 @@
                                     <a href="#french">French</a>
                                     <a href="#italian">Italian</a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -100,12 +95,8 @@
                         <input type="text" class="hide" id="${user_id}" name="user_id" value="${user_id}">
                         <input type="text" class="hide" id="${restaurants[selectedRestaurant].id}" name="restaurant_id"
                             value="${restaurants[selectedRestaurant].id}">
-
                         <div id="main">
-
-
                             <div class="container1" id="blur">
-
                                 <div class="content" id="content">
                                 
                                     <div id='card'>
@@ -114,7 +105,6 @@
                                             <img src="${restaurants[selectedRestaurant].food_photo}"
                                                     onclick="toggle()" id="foodPic">
                                         </div>
-
                                         <div id='lower-side'>
                                             <h2 id="restName">${restaurants[selectedRestaurant].restaurant_name}</h2>
                                             <span id="restCuisine"><span
@@ -123,7 +113,6 @@
                                                     id="price">${chef[(restaurants[selectedRestaurant].chef_id)].last_name}</span></span>
                                             <br>
                                         </div>
-
                                         <br>
                                         <button id="dislike" onclick="increment()"><i
                                                 class="fa fa-close"></i></button><span
@@ -134,9 +123,7 @@
                                     </div>
                                 </div>
                             </div>
-
                             
-
                             <div id="popup">
                                 <nav>
                                     <ul>
@@ -149,44 +136,33 @@
                                 </nav>
                                 <br>
                                 <figure class="popout_img">
-
                                     <h2>${restaurants[selectedRestaurant].restaurant_name}</h2>
                                     <img src="${restaurants[selectedRestaurant].location_photo}" id="restLocation">
-
                                 </figure>
                                 <br><br><br>
-
                                 <div id="menu">
-
                                     <h2>Menu Details</h2>
                                     <img src="${restaurants[selectedRestaurant].menu_photo}" id="restMenu">
-
                                 </div>
-
                                 <br><br>
-
                                 <div id="chef">
-
                                     <h2>About Chef</h2>
                                     <img src="${restaurants[selectedRestaurant].chef_photo}" id="restChef">
+<<<<<<< HEAD
                                     
 
+=======
+                                    <p>${chef[(restaurants[selectedRestaurant].chef_id)].first_name}</p>
+>>>>>>> 6529e3f01e23b4b3078edf16ee7a70d9a91e5de4
                                 </div>
-
                                 <br>
-
                                 <div id="dishes">
-
                                     <h2>Top Dishes</h2>
                                     <img src="${restaurants[selectedRestaurant].food_photo}" id="restPopDish">
                                     <p id="restPopDishDescription">${restaurants[selectedRestaurant].popular_dish}</p>
-
                                 </div>
-
                                 <br>
-
                                 <div id="details">
-
                                     <h2>Restaurant Details</h2>
                                     <p id="restName"> ${restaurants[selectedRestaurant].restaurant_name} </p>
                                     <p id="restAddress"> ${restaurants[selectedRestaurant].address}</p>
@@ -196,10 +172,8 @@
                                             href="${restaurants[selectedRestaurant].website}">${restaurants[selectedRestaurant].website}</a>
                                     </p>
                                 </div>
-
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="col justify-content-end">

@@ -1,4 +1,5 @@
 // const { Router } = require('express')
+// const { Router } = require('express')
 const express=require('express')
 const bodyParser=require('body-parser');
 const path=require('path')
@@ -62,8 +63,13 @@ app.post('/foodie/favorites', async (req, res, next) => {
     const favorite=await db.User_restaurant.create({
         user_id, restaurant_id
     });
+<<<<<<< HEAD
 
     res.statusCode
+=======
+>>>>>>> 6529e3f01e23b4b3078edf16ee7a70d9a91e5de4
+
+    res.send()
 
 })
 
@@ -80,6 +86,23 @@ app.get('/foodie/favorites', async (req, res) => {
         })
     })
 })
+<<<<<<< HEAD
+
+
+app.get('/foodie/favorites', async (req, res) => {
+    const favorites=await db.User_restaurant.findAll().then(function (favorite) {
+        const dbfavorite=JSON.stringify(favorite)
+
+        const rest_user=db.Restaurant.findAll().then(function (rest) {
+            const dbrest_user=JSON.stringify(rest)
+
+
+            res.render('foodie/index', { faves: dbfavorite, rest: dbrest_user });
+        })
+    })
+})
+=======
+>>>>>>> 6529e3f01e23b4b3078edf16ee7a70d9a91e5de4
 
 
 
