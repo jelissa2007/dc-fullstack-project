@@ -29,7 +29,3 @@ function filterFunction() {
     }
   }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 0ac8fc97f075591418f54a17412defd4d2ac3f60
