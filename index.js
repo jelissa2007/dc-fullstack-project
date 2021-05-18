@@ -85,12 +85,6 @@ app.get('/foodie/favorites', async (req, res) => {
     })
 })
 
-
-
-
-
-
-
 const server=app.listen(PORT, () => {
 
     console.log(`Express is working on port ${PORT}. http://localhost:${PORT}/foodie/signup`);

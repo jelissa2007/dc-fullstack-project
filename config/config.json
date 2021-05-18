@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "eidaprwz",
+    "password": "NOLa56EizOeugvltlsxoEXFdxD3gPj6N",
+    "database": "eidaprwz",
+    "host": "queenie.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "eidaprwz",
+    "password": "null",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "eidaprwz",
+    "password": "null",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
