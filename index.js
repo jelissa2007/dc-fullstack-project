@@ -8,6 +8,7 @@ const app=express()
 const PORT=process.env.PORT||3005;
 
 const db=require('./models');
+const { UniqueConstraintError } = require('sequelize');
 console.log(db.Users)
 
 
@@ -96,10 +97,6 @@ app.get('/foodie/favorites', async (req, res) => {
         })
     })
 })
-
-
-
-
 
 
 const server=app.listen(PORT, () => {

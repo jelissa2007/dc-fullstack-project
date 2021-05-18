@@ -30,7 +30,7 @@ function filterFunction() {
 }
 // /////stop click of favorites button
 
-function myFunction() {
-  document.getElementsById("favorites")[0].removeAttribute("onclick");
+// function myFunction() {
+//   document.getElementsById("favorites")[0].removeAttribute("onclick");
 
-};
+// };

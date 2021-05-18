@@ -218,6 +218,7 @@ cursor: pointer;
   justify-content: left;
   align-items: center;
   transition: 0.5s;
+  overflow-x: hidden;
   /* padding: 20px; */
   
 }
@@ -424,7 +425,7 @@ li a{
 	border-radius: 50%;
 	right: 8px;
 	top: 8px;
-	background-color: #eb452b;
+	background-color: #46b59b;
 	visibility: hidden;
 	opacity: 0;
 	-moz-transition: all 0.4s ease;
