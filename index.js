@@ -1,4 +1,4 @@
-// const { Router } = require('express')
+
 const express=require('express')
 const bodyParser=require('body-parser');
 const path=require('path')
@@ -8,7 +8,6 @@ const app=express()
 const PORT=process.env.PORT||3005;
 
 const db=require('./models');
-const { UniqueConstraintError } = require('sequelize');
 console.log(db.Users)
 
 
@@ -73,10 +72,12 @@ app.post('/foodie/favorites', async (req, res, next) => {
 
 app.get('/foodie/favorites', async (req, res) => {
     const favorites=await db.User_restaurant.findAll().then(function (favorite) {
-        const dbfavorite=JSON.stringify(favorite)
+        const dbfavorite=favorite
 
         const rest_user=db.Restaurant.findAll().then(function (rest) {
-            const dbrest_user=JSON.stringify(rest)
+            const dbrest_user=rest
+
+
 
 
             res.render('foodie/index', { faves: dbfavorite, rest: dbrest_user });
@@ -85,21 +86,13 @@ app.get('/foodie/favorites', async (req, res) => {
 })
 
 
-app.get('/foodie/favorites', async (req, res) => {
-    const favorites=await db.User_restaurant.findAll().then(function (favorite) {
-        const dbfavorite=JSON.stringify(favorite)
-
-        const rest_user=db.Restaurant.findAll().then(function (rest) {
-            const dbrest_user=JSON.stringify(rest)
 
 
-            res.render('foodie/index', { faves: dbfavorite, rest: dbrest_user });
-        })
-    })
-})
+
 
 
 const server=app.listen(PORT, () => {
 
     console.log(`Express is working on port ${PORT}. http://localhost:${PORT}/foodie/signup`);
 });
+
