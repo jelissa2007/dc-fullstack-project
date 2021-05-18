@@ -5,21 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodie</title>
+    <%- include('../partials/header' ) %>
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        h1 {
+            margin-top: 0;
+            /* margin-bottom: 20; */
+            font-size: 8rem;
+            text-align: center;
+            height: 27vh;
+            line-height: 22vh;
+            color: #fcedd8;
+            background: #d52e3f;
+            font-family: "Niconne", cursive;
+            font-weight: 600;
+            text-shadow: 5px 5px 0px #eb452b, 10px 10px 0px #efa032, 15px 15px 0px #46b59b,
+                20px 20px 0px #017e7f, 25px 25px 0px #052939, 30px 30px 0px #c11a2b,
+                35px 35px 0px #c11a2b, 40px 40px 0px #c11a2b, 45px 45px 0px #c11a2b;
+        }
+
+        img {
+            width: 45%;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Your Liked Restaurants</h1>
+    <h1>Foodie</h1>
+    <h2>Your Liked Restaurants</h2>
 
 
 
 
 
+    <ul>
+        <% faves.map((fave) =>{%>
 
-    <li><%= faves%></li>
+        <li>
+            <div id="card">
+                <h3><%=fave.restaurant_name%></h3>
+                <img src="<%=fave.restaurant_photo%>">
+                <p><%=fave.address%></p>
+                <%=fave.cuisine_type%>
+                <p> <%=fave.address%></p>
+                <a href="<%=fave.website%>"><%=fave.website%></a>
+                <p> <%=fave.phone_number%> </p>
+            </div>
+        </li>
 
-    <button>remove</button>
+
+        <button onclick="deleteButton" id="delete">remove</button>
+        <% })%>
 
 
+
+    </ul>
+
+    <a href="http://localhost:3005/" id="favorites">Back</a>
+    <%- include('../partials/footer' ) %>
 </body>
+<script src="public/js/app.js"></script>
 
 </html>
