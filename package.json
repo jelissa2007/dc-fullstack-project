@@ -1,10 +1,13 @@
 {
   "name": "backend-frontend-project",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.16.0"
+  },
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
