@@ -11,6 +11,8 @@ Sequlize
 Elphant SQL
 Heroku CLI
 
+![Screen Shot 2021-05-17 at 8 33 40 PM](https://user-images.githubusercontent.com/77135051/118572780-34bc7f00-b74f-11eb-9b5d-4bb47accc357.png)
+
 Setup:
 Node.js and the Heroku CLI must be installed in order to run this application locally.
 To run this project, install it locally using npm:
