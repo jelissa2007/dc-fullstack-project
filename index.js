@@ -15,7 +15,7 @@ app.use(express.urlencoded());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
-app.set('views', publicDirectoryPath)
+app.set('views', 'views')
 
 // main foodie page
 app.get('/', async (req, res) => {
@@ -52,7 +52,7 @@ app.post('/foodie/signup', async function (req, res, next) {
 
 });
 
-// favorites route
+// add favorites
 app.post('/foodie/favorites', async (req, res, next) => {
 
     console.log('favorites add', req.body)
@@ -69,7 +69,7 @@ app.post('/foodie/favorites', async (req, res, next) => {
 
 })
 
-
+// favorites route
 app.get('/foodie/favorites', async (req, res) => {
     const favorites=await db.User_restaurant.findAll().then(function (favorite) {
         const dbfavorite=favorite
