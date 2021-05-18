@@ -17,26 +17,6 @@
         let restaurants= <%- restaurant%>;
         let chef= <%- chef%>;
         let user_id= <%= user_id %>;
-        function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-          console.log(cuisineTypeArray)
-        }
-        function filterFunction() {
-          var input, filter, ul, li, a, i;
-          input=document.getElementById("myInput");
-          filter=input.value.toUpperCase();
-          div=document.getElementById("myDropdown");
-          a=div.getElementsByTagName("a");
-          for (i=0; i<a.length; i++) {
-            txtValue=a[i].textContent||a[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter)>-1) {
-              a[i].style.display="";
-            } else {
-              a[i].style.display="none";
-            }
-          }
-        }
-
         function increment() {
             selectedRestaurant++
             let restTemplate=`
@@ -115,6 +95,18 @@
                         <input type="text" class="hide" id="${user_id}" name="user_id" value="${user_id}">
                         <input type="text" class="hide" id="${restaurants[selectedRestaurant].id}" name="restaurant_id"
                             value="${restaurants[selectedRestaurant].id}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].food_photo}" name="restaurant_photo"
+                            value="${restaurants[selectedRestaurant].food_photo}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].restaurant_name}" name="restaurant_name"
+                            value="${restaurants[selectedRestaurant].restaurant_name}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].cuisine_type}" name="cuisine_type"
+                            value="${restaurants[selectedRestaurant].cuisine_type}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].address}" name="address"
+                            value="${restaurants[selectedRestaurant].address}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].phone_number}" name="phone_number"
+                            value="${restaurants[selectedRestaurant].phone_number}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].website}" name="website"
+                            value="${restaurants[selectedRestaurant].website}">
                         <div id="main">
                             <div class="container1" id="blur">
                                 <div class="content" id="content">
@@ -134,12 +126,15 @@
                                             <br>
                                         </div>
                                         <br>
-                                        <button id="dislike" onclick="increment()"><i
-                                                class="fa fa-close"></i></button><span
-                                            style="display:inline-block; width: 20px;"></span>
+                                        <span>
+                                        <button id="next" onclick="increment()"><i class="fa fa-arrow-circle-right"></i></button><span
+                                            style="display:inline-block; width: 20px;"></span><span
+                                            style="display:inline-block; width: 20px;"></span><span
+                                            style="display:inline-block; width: 20px;"></span></span>
+                                            <span>
                                         <button id="like" type="submit"><i class="fa fa-heart"></i></button><span
-                                            style="display:inline-block; width: 20px;"></span>
-                                        <button id="next" onclick="increment()"><i class="fa fa-arrow-circle-right"></i></button>
+                                            style="display:inline-block; width: 20px;"></span></span>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -192,17 +187,14 @@
                         </div>
                     </form>
                 </div>
-                <div class="col justify-content-end">
+                <div class="col">
                     <br>
-                    <button onclick="" id="favorites">Your Favorites!</button>
+                    <a href="http://localhost:3005/foodie/favorites" id="favorites">YourFavorites!</a>
                 </div>
             </div>
         </div>`
             const container=document.getElementById('content')
             container.innerHTML=restTemplate
-            let cuisineType = document.getElementById('cuisine_type').innerHTML
-            let cuisineTypeArray = cuisineType.split(', ')
-            console.log(cuisineTypeArray)
             if (selectedRestaurant==24) {
                 selectedRestaurant=0
             }
@@ -228,12 +220,8 @@
 
 
     <div class="footer">
-        <!-- <p> Created and Engineered by the Following Application Developers: </p> -->
-
-        <a href="https://github.com/jelissa2007" target="_blank" rel="noopener noreferrer">Jelissa W.</a>
-        <a href="https://github.com/myrriame" target="_blank" rel="noopener noreferrer">Myrriame D.</a>
-        <a href="https://github.com/csolis1" target="_blank" rel="noopener noreferrer">Celida S.</a>
-    </div>
+        <%- include('partials/footer' ) %>
+     </div>
 </body>
 
 </html>
