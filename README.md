@@ -1,7 +1,7 @@
 FOODIE ATL
 
 General Info:
-FOODIE ATL is a resturant search application created to allow local foodies to search different resturants with various cusines in the metro atlanta area. This application is built with Javascript, Express, Selqulize, Databse built with Elphant SQL and hosted on Heroku using Heroku CLI.
+FOODIE ATL is an application that was created to allow local foodies to search different restaurants with various cusines in the metro atlanta area. This application was built with Javascript, Express, Sequelize, and the Database was built with ElephantSQL and hosted on Heroku using Heroku CLI.
 
 Technologies:
 Javascript
