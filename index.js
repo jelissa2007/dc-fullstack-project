@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 app.set('views', publicDirectoryPath)
 
 // main foodie page
-app.get('/', async (req, res) => {
+app.get('/foodie', async (req, res) => {
 
     const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
 
@@ -39,7 +39,7 @@ app.get('/', async (req, res) => {
 })
 
 // signup page
-app.get('/foodie/signup', (req, res) => {
+app.get('/', (req, res) => {
     res.render('foodie/signup')
 })
 
@@ -47,7 +47,7 @@ app.post('/foodie/signup', async function (req, res, next) {
 
     const user=await db.Users.create(req.body.users)
 
-    res.redirect('/')
+    res.redirect('/foodie')
 
 
 });
@@ -93,6 +93,6 @@ app.get('/foodie/favorites', async (req, res) => {
 
 const server=app.listen(PORT, () => {
 
-    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}/foodie/signup`);
+    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}`);
 });
 
