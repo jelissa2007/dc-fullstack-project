@@ -1,5 +1,7 @@
 FOODIE ATL
 
+![foodie](https://user-images.githubusercontent.com/77135051/119242144-a6b70e80-bb29-11eb-918b-3b8acce25dd3.gif)
+
 General Info:
 FOODIE ATL is an application that was created to allow local foodies to search different restaurants with various cusines in the metro atlanta area. This application was built with Javascript, Express, Sequelize, and the Database was built with ElephantSQL and hosted on Heroku using Heroku CLI.
 
@@ -21,4 +23,4 @@ $ cd dc-fullstack-project
 $ npm install
 $ npm run dev
 
-![foodie](https://user-images.githubusercontent.com/77135051/119242144-a6b70e80-bb29-11eb-918b-3b8acce25dd3.gif)
+
