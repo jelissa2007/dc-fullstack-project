@@ -20,3 +20,5 @@ $ https://github.com/jelissa2007/dc-fullstack-project.git # or clone your own fo
 $ cd dc-fullstack-project
 $ npm install
 $ npm run dev
+
+![foodie](https://user-images.githubusercontent.com/77135051/119242144-a6b70e80-bb29-11eb-918b-3b8acce25dd3.gif)
