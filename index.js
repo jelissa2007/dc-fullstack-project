@@ -2,7 +2,9 @@
 const express=require('express')
 const bodyParser=require('body-parser');
 const path=require('path')
-const publicDirectoryPath=path.join(__dirname, 'views')
+const publicDirectoryPath=path.join(__dirname, 'views');
+const session = require('express-session');
+const _ = require('lodash');
 const app=express()
 
 const PORT=process.env.PORT||3005;
@@ -10,16 +12,22 @@ const PORT=process.env.PORT||3005;
 const db = require('./models');
 
 app.use(express.urlencoded());
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
+app.use(session({
+    secret: 'some seceret that no one knows',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {}
+}));
 
 app.set('view engine', 'ejs');
 app.set('views', publicDirectoryPath)
-app.use(express.static(__dirname + '/public'));
 
 // main foodie page
 app.get('/foodie', async (req, res) => {
+    console.log(req.session);
     let ndx = 0;
-    const userId = 14;
+    const userId = req.session.user.id;
     const restaurantModels = await db.Restaurant.findAll({ include: 'chef' });
     const restaurants = JSON.stringify(restaurantModels);
 
@@ -44,16 +52,23 @@ app.get('/foodie', async (req, res) => {
 
 // signup page
 app.get('/', (req, res) => {
+    console.log(req.session);
     res.render('foodie/signup')
 })
 
 app.post('/foodie/signup', async function (req, res, next) {
+    // const user=await db.Users.create(req.body.users)
+    // console.log('PARAMS: ', req.body.users);
+    const { username, first_name, last_name } = req.body.users;
 
-    const user=await db.Users.create(req.body.users)
+    const user = await db.Users.findOrCreate({
+        where: { username },
+        defaults: { username, first_name, last_name }
+    })
+
+    req.session.user = user[0];
 
     res.redirect('/foodie')
-
-
 });
 
 // favorites route
@@ -61,32 +76,27 @@ app.post('/foodie/favorites', async (req, res, next) => {
 
     console.log('favorites add', req.body)
 
-    const { user_id, restaurant_id }=req.body
+    // const { user_id, restaurant_id }=req.body
+    const restaurant = _.omit(req.body, ['userId']);
+    const favorite = _.assign({}, restaurant, { user_id: req.session.user.id });
 
-    const favorite=await db.User_restaurant.create({
-        user_id, restaurant_id
-    });
+    await db.User_restaurant.create(favorite);
 
-    res.statusCode
-
-
-
+    res.send(201);
 })
 
 
 app.get('/foodie/favorites', async (req, res) => {
-    const favorites=await db.User_restaurant.findAll().then(function (favorite) {
-        const dbfavorite=favorite
+    const { id } = req.session.user;
+    const favorites = await db.User_restaurant.findAll({ 
+        where: { 
+            user_id: id
+        }
+    });
+    const rest_user = await db.Restaurant.findAll();
+    console.log({ favorites, rest_user })
 
-        const rest_user=db.Restaurant.findAll().then(function (rest) {
-            const dbrest_user=rest
-
-
-
-
-            res.render('foodie/index', { faves: dbfavorite, rest: dbrest_user });
-        })
-    })
+    res.render('foodie/index', { faves: favorites, rest: rest_user });
 })
 
 
