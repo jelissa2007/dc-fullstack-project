@@ -78,8 +78,6 @@ app.get('/foodie/favorites', async (req, res) => {
             const dbrest_user=rest
 
 
-
-
             res.render('foodie/index', { faves: dbfavorite, rest: dbrest_user });
         })
     })
