@@ -15,10 +15,10 @@ app.use(express.urlencoded());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
-app.set('views', publicDirectoryPath)
+app.set('views', 'views')
 
 // main foodie page
-app.get('/foodie', async (req, res) => {
+app.get('/', async (req, res) => {
 
     const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
 
@@ -39,7 +39,7 @@ app.get('/foodie', async (req, res) => {
 })
 
 // signup page
-app.get('/', (req, res) => {
+app.get('/foodie/signup', (req, res) => {
     res.render('foodie/signup')
 })
 
@@ -47,20 +47,20 @@ app.post('/foodie/signup', async function (req, res, next) {
 
     const user=await db.Users.create(req.body.users)
 
-    res.redirect('/foodie')
+    res.redirect('/')
 
 
 });
 
-// favorites route
+// add favorites
 app.post('/foodie/favorites', async (req, res, next) => {
 
     console.log('favorites add', req.body)
 
-    const { user_id, restaurant_id }=req.body
+    const { user_id, restaurant_id, restaurant_photo, restaurant_name, cuisine_type, address, phone_number, website }=req.body
 
     const favorite=await db.User_restaurant.create({
-        user_id, restaurant_id
+        user_id, restaurant_id, restaurant_photo, restaurant_name, cuisine_type, address, phone_number, website
     });
 
     res.statusCode
@@ -69,7 +69,7 @@ app.post('/foodie/favorites', async (req, res, next) => {
 
 })
 
-
+// favorites route
 app.get('/foodie/favorites', async (req, res) => {
     const favorites=await db.User_restaurant.findAll().then(function (favorite) {
         const dbfavorite=favorite
@@ -90,9 +90,9 @@ app.get('/foodie/favorites', async (req, res) => {
 
 
 
-
 const server=app.listen(PORT, () => {
 
-    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}`);
+    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}/foodie/signup`);
 });
+
 
