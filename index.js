@@ -7,9 +7,7 @@ const app=express()
 
 const PORT=process.env.PORT||3005;
 
-const db=require('./models');
-console.log(db.Users)
-
+const db = require('./models');
 
 app.use(express.urlencoded());
 app.use(express.static('public'));
@@ -19,22 +17,28 @@ app.set('views', publicDirectoryPath)
 
 // main foodie page
 app.get('/foodie', async (req, res) => {
+    let ndx = 0;
+    const userId = 14;
+    const restaurantModels = await db.Restaurant.findAll({ include: 'chef' });
+    const restaurants = JSON.stringify(restaurantModels);
 
-    const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
+    res.render('home', { restaurants, ndx, userId })
 
-        const dbrestaurant=JSON.stringify(restaurant)
+    // const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
 
-        let selectedRestaurant=0
+    //     const dbrestaurant=JSON.stringify(restaurant)
 
-        const user_id=14
+    //     let selectedRestaurant=0
 
-        const chefs=db.Chefs.findAll().then(function (chef) {
-            const dbchef=JSON.stringify(chef)
+    //     const user_id=14
+
+    //     const chefs=db.Chefs.findAll().then(function (chef) {
+    //         const dbchef=JSON.stringify(chef)
 
 
-            res.render('home', { restaurant: dbrestaurant, selectedRestaurant, chef: dbchef, user_id: user_id });
-        })
-    })
+    //         res.render('home', { restaurant: dbrestaurant, selectedRestaurant, chef: dbchef, user_id: user_id });
+    //     })
+    // })
 
 })
 
