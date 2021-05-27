@@ -14,6 +14,7 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 app.set('views', publicDirectoryPath)
+app.use(express.static(__dirname + '/public'));
 
 // main foodie page
 app.get('/foodie', async (req, res) => {
@@ -39,7 +40,6 @@ app.get('/foodie', async (req, res) => {
     //         res.render('home', { restaurant: dbrestaurant, selectedRestaurant, chef: dbchef, user_id: user_id });
     //     })
     // })
-
 })
 
 // signup page
