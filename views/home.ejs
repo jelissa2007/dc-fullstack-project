@@ -13,10 +13,12 @@
     <h1>Foodie</h1>
 
     <script>
+
         let ndx= <%= ndx %>;
         let restaurants= <%- restaurants%>;
         let currentRestaurant = restaurants[ndx];
         let userId= <%= userId %>;
+
         function increment() {
             ndx++
             currentRestaurant = restaurants[ndx]
@@ -222,7 +224,9 @@
 
     <div class="footer">
         <%- include('partials/footer' ) %>
-     </div>
+
+    </div>
+
 </body>
 
 </html>

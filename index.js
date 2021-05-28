@@ -24,6 +24,7 @@ app.set('view engine', 'ejs');
 app.set('views', publicDirectoryPath)
 
 // main foodie page
+
 app.get('/foodie', async (req, res) => {
     console.log(req.session);
     let ndx = 0;
@@ -31,7 +32,10 @@ app.get('/foodie', async (req, res) => {
     const restaurantModels = await db.Restaurant.findAll({ include: 'chef' });
     const restaurants = JSON.stringify(restaurantModels);
 
-    res.render('home', { restaurants, ndx, userId })
+// app.get('/', async (req, res) => {
+// >>>>>>> main
+
+//     res.render('home', { restaurants, ndx, userId })
 
     // const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
 
@@ -51,8 +55,12 @@ app.get('/foodie', async (req, res) => {
 })
 
 // signup page
+
 app.get('/', (req, res) => {
     console.log(req.session);
+
+// app.get('/foodie/signup', (req, res) => {
+
     res.render('foodie/signup')
 })
 
@@ -61,32 +69,50 @@ app.post('/foodie/signup', async function (req, res, next) {
     // console.log('PARAMS: ', req.body.users);
     const { username, first_name, last_name } = req.body.users;
 
+
     const user = await db.Users.findOrCreate({
         where: { username },
         defaults: { username, first_name, last_name }
     })
+
+//     const user=await db.Users.create(req.body.users)
+
+//     res.redirect('/')
+// >>>>>>> main
 
     req.session.user = user[0];
 
     res.redirect('/foodie')
 });
 
-// favorites route
+// add favorites
 app.post('/foodie/favorites', async (req, res, next) => {
 
     console.log('favorites add', req.body)
 
+
     // const { user_id, restaurant_id }=req.body
     const restaurant = _.omit(req.body, ['userId']);
     const favorite = _.assign({}, restaurant, { user_id: req.session.user.id });
+
+//     const { user_id, restaurant_id, restaurant_photo, restaurant_name, cuisine_type, address, phone_number, website }=req.body
+
+//     const favorite=await db.User_restaurant.create({
+//         user_id, restaurant_id, restaurant_photo, restaurant_name, cuisine_type, address, phone_number, website
+//     });
+
+//     res.statusCode
+
+
 
     await db.User_restaurant.create(favorite);
 
     res.send(201);
 })
 
-
+// favorites route
 app.get('/foodie/favorites', async (req, res) => {
+<<<<<<< fix/general-fixes
     const { id } = req.session.user;
     const favorites = await db.User_restaurant.findAll({ 
         where: { 
@@ -97,8 +123,19 @@ app.get('/foodie/favorites', async (req, res) => {
     console.log({ favorites, rest_user })
 
     res.render('foodie/index', { faves: favorites, rest: rest_user });
-})
 
+//     const favorites=await db.User_restaurant.findAll().then(function (favorite) {
+//         const dbfavorite=favorite
+
+//         const rest_user=db.Restaurant.findAll().then(function (rest) {
+//             const dbrest_user=rest
+
+
+//             res.render('foodie/index', { faves: dbfavorite, rest: dbrest_user });
+//         })
+//     })
+
+})
 
 
 
@@ -107,6 +144,7 @@ app.get('/foodie/favorites', async (req, res) => {
 
 const server=app.listen(PORT, () => {
 
-    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}`);
+    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}/foodie/signup`);
 });
+
 
