@@ -13,15 +13,30 @@
     <h1>Foodie</h1>
 
     <script>
-
-        let ndx= <%= ndx %>;
-        let restaurants= <%- restaurants%>;
-        let currentRestaurant = restaurants[ndx];
-        let userId= <%= userId %>;
-
+        let selectedRestaurant= <%= selectedRestaurant %>;
+        let restaurants= <%- restaurant%>;
+        let chef= <%- chef%>;
+        let user_id= <%= user_id %>;
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+        function filterFunction() {
+            var input, filter, ul, li, a, i;
+            input=document.getElementById("myInput");
+            filter=input.value.toUpperCase();
+            div=document.getElementById("myDropdown");
+            a=div.getElementsByTagName("a");
+            for (i=0; i<a.length; i++) {
+                txtValue=a[i].textContent||a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter)>-1) {
+                    a[i].style.display="";
+                } else {
+                    a[i].style.display="none";
+                }
+            }
+        }
         function increment() {
-            ndx++
-            currentRestaurant = restaurants[ndx]
+            selectedRestaurant++
             let restTemplate=`
             <div class="container">
             <div class="row">
@@ -95,21 +110,21 @@
                 <div class="col align-self-center">
                     
                     <br>
-                        <input type="text" class="hide" id="${userId}" name="userId" value="${userId}">
-                        <input type="text" class="hide" id="${currentRestaurant.id}" name="restaurant_id"
-                            value="${currentRestaurant.id}">
-                            <input type="text" class="hide" id="${currentRestaurant.food_photo}" name="restaurant_photo"
-                            value="${currentRestaurant.food_photo}">
-                            <input type="text" class="hide" id="${currentRestaurant.restaurant_name}" name="restaurant_name"
-                            value="${currentRestaurant.restaurant_name}">
-                            <input type="text" class="hide" id="${currentRestaurant.cuisine_type}" name="cuisine_type"
-                            value="${currentRestaurant.cuisine_type}">
-                            <input type="text" class="hide" id="${currentRestaurant.address}" name="address"
-                            value="${currentRestaurant.address}">
-                            <input type="text" class="hide" id="${currentRestaurant.phone_number}" name="phone_number"
-                            value="${currentRestaurant.phone_number}">
-                            <input type="text" class="hide" id="${currentRestaurant.website}" name="website"
-                            value="${currentRestaurant.website}">
+                        <input type="text" class="hide" id="${user_id}" name="user_id" value="${user_id}">
+                        <input type="text" class="hide" id="${restaurants[selectedRestaurant].id}" name="restaurant_id"
+                            value="${restaurants[selectedRestaurant].id}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].food_photo}" name="restaurant_photo"
+                            value="${restaurants[selectedRestaurant].food_photo}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].restaurant_name}" name="restaurant_name"
+                            value="${restaurants[selectedRestaurant].restaurant_name}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].cuisine_type}" name="cuisine_type"
+                            value="${restaurants[selectedRestaurant].cuisine_type}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].address}" name="address"
+                            value="${restaurants[selectedRestaurant].address}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].phone_number}" name="phone_number"
+                            value="${restaurants[selectedRestaurant].phone_number}">
+                            <input type="text" class="hide" id="${restaurants[selectedRestaurant].website}" name="website"
+                            value="${restaurants[selectedRestaurant].website}">
                         <div id="main">
                             <div class="container1" id="blur">
                                 <div class="content" id="content">
@@ -117,15 +132,15 @@
                                     <div id='card'>
                                         
                                         <div id='upper-side'>
-                                            <img src="${currentRestaurant.food_photo}"
+                                            <img src="${restaurants[selectedRestaurant].food_photo}"
                                                     onclick="toggle()" id="foodPic">
                                         </div>
                                         <div id='lower-side'>
-                                            <h2 id="restName">${currentRestaurant.restaurant_name}</h2>
+                                            <h2 id="restName">${restaurants[selectedRestaurant].restaurant_name}</h2>
                                             <span id="restCuisine"><span
-                                                    id="cuisine_type">${currentRestaurant.cuisine_type}</span>
+                                                    id="cuisine_type">${restaurants[selectedRestaurant].cuisine_type}</span>
                                                 <span
-                                                    id="price">${currentRestaurant.chef?.last_name || '$'}</span></span>
+                                                    id="price">${chef[(restaurants[selectedRestaurant].chef_id)].last_name}</span></span>
                                             <br>
                                         </div>
                                         <br>
@@ -154,36 +169,36 @@
                                 </nav>
                                 <br>
                                 <figure class="popout_img">
-                                    <h2>${currentRestaurant.restaurant_name}</h2>
-                                    <img src="${currentRestaurant.location_photo}" id="restLocation">
+                                    <h2>${restaurants[selectedRestaurant].restaurant_name}</h2>
+                                    <img src="${restaurants[selectedRestaurant].location_photo}" id="restLocation">
                                 </figure>
                                 <br><br><br>
                                 <div id="menu">
                                     <h2>Menu Details</h2>
-                                    <img src="${currentRestaurant.menu_photo}" id="restMenu">
+                                    <img src="${restaurants[selectedRestaurant].menu_photo}" id="restMenu">
                                 </div>
                                 <br><br>
                                 <div id="chef">
                                     <h2>About Chef</h2>
-                                    <img src="${currentRestaurant.chef_photo}" id="restChef">
+                                    <img src="${restaurants[selectedRestaurant].chef_photo}" id="restChef">
                                     
 
                                 </div>
                                 <br>
                                 <div id="dishes">
                                     <h2>Top Dishes</h2>
-                                    <img src="${currentRestaurant.food_photo}" id="restPopDish">
-                                    <p id="restPopDishDescription">${currentRestaurant.popular_dish}</p>
+                                    <img src="${restaurants[selectedRestaurant].food_photo}" id="restPopDish">
+                                    <p id="restPopDishDescription">${restaurants[selectedRestaurant].popular_dish}</p>
                                 </div>
                                 <br>
                                 <div id="details">
                                     <h2>Restaurant Details</h2>
-                                    <p id="restName"> ${currentRestaurant.restaurant_name} </p>
-                                    <p id="restAddress"> ${currentRestaurant.address}</p>
-                                    <p id="restNumber"> ${currentRestaurant.phone_number}</p>
-                                    <p id="restHours"> ${currentRestaurant.hours}</p>
+                                    <p id="restName"> ${restaurants[selectedRestaurant].restaurant_name} </p>
+                                    <p id="restAddress"> ${restaurants[selectedRestaurant].address}</p>
+                                    <p id="restNumber"> ${restaurants[selectedRestaurant].phone_number}</p>
+                                    <p id="restHours"> ${restaurants[selectedRestaurant].hours}</p>
                                     <p id="restWebsite"> <a
-                                            href="${currentRestaurant.website}">${currentRestaurant.website}</a>
+                                            href="${restaurants[selectedRestaurant].website}">${restaurants[selectedRestaurant].website}</a>
                                     </p>
                                 </div>
                             </div>
@@ -198,8 +213,8 @@
         </div>`
             const container=document.getElementById('content')
             container.innerHTML=restTemplate
-            if (ndx >= 24) {
-                ndx = 0;
+            if (selectedRestaurant==24) {
+                selectedRestaurant=0
             }
         }
         function toggle() {
