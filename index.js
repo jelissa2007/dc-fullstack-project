@@ -21,7 +21,7 @@ app.use(session({
 }));
 
 app.set('view engine', 'ejs');
-app.set('views', publicDirectoryPath)
+app.set('views', 'views')
 
 // main foodie page
 app.get('/foodie', async (req, res) => {
@@ -32,22 +32,6 @@ app.get('/foodie', async (req, res) => {
     const restaurants = JSON.stringify(restaurantModels);
 
     res.render('home', { restaurants, ndx, userId })
-
-    // const restaurants=await db.Restaurant.findAll().then(function (restaurant) {
-
-    //     const dbrestaurant=JSON.stringify(restaurant)
-
-    //     let selectedRestaurant=0
-
-    //     const user_id=14
-
-    //     const chefs=db.Chefs.findAll().then(function (chef) {
-    //         const dbchef=JSON.stringify(chef)
-
-
-    //         res.render('home', { restaurant: dbrestaurant, selectedRestaurant, chef: dbchef, user_id: user_id });
-    //     })
-    // })
 })
 
 // signup page
@@ -57,8 +41,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/foodie/signup', async function (req, res, next) {
-    // const user=await db.Users.create(req.body.users)
-    // console.log('PARAMS: ', req.body.users);
     const { username, first_name, last_name } = req.body.users;
 
     const user = await db.Users.findOrCreate({
@@ -71,12 +53,8 @@ app.post('/foodie/signup', async function (req, res, next) {
     res.redirect('/foodie')
 });
 
-// favorites route
+// add favorites
 app.post('/foodie/favorites', async (req, res, next) => {
-
-    console.log('favorites add', req.body)
-
-    // const { user_id, restaurant_id }=req.body
     const restaurant = _.omit(req.body, ['userId']);
     const favorite = _.assign({}, restaurant, { user_id: req.session.user.id });
 
@@ -85,7 +63,7 @@ app.post('/foodie/favorites', async (req, res, next) => {
     res.send(201);
 })
 
-
+// favorites route
 app.get('/foodie/favorites', async (req, res) => {
     const { id } = req.session.user;
     const favorites = await db.User_restaurant.findAll({ 
@@ -94,7 +72,6 @@ app.get('/foodie/favorites', async (req, res) => {
         }
     });
     const rest_user = await db.Restaurant.findAll();
-    console.log({ favorites, rest_user })
 
     res.render('foodie/index', { faves: favorites, rest: rest_user });
 })
@@ -104,9 +81,9 @@ app.get('/foodie/favorites', async (req, res) => {
 
 
 
-
 const server=app.listen(PORT, () => {
 
-    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}`);
+    console.log(`Express is working on port ${PORT}. http://localhost:${PORT}/foodie/signup`);
 });
+
 

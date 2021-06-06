@@ -27,8 +27,14 @@
                 35px 35px 0px #c11a2b, 40px 40px 0px #c11a2b, 45px 45px 0px #c11a2b;
         }
 
+        h2 {
+            text-align: center;
+        }
+
         img {
-            width: 45%;
+ width: 400px;
+            height: 300px;
+
         }
 
         .hidden {
@@ -37,42 +43,72 @@
 
         li {
             list-style-type: none;
+            display: inline;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #D52E3F;
+            /* font-family: 'Mouse Memoirs'; */
+            color: #fcedd8;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        span.card {
+
+            padding: 10px;
+
         }
     </style>
 </head>
 
 <body>
     <h1>Foodie</h1>
-    <h2>Your Liked Restaurants</h2>
+    <br>
+    <h2>Your Liked Restaurants</h2> <span><a href="http://localhost:3005/" id="favorites">Back</a></span>
 
 
 
 
+    <div class="container my-5">
+        <div class="row">
 
-    <ul>
-        <% faves.map((fave) =>{%>
 
-        <li>
-            <div id="card">
-                <h3><%=fave.restaurant_name%></h3>
-                <img src="<%=fave.restaurant_photo%>">
-                <p><%=fave.address%></p>
-                <%=fave.cuisine_type%>
-                <p> <%=fave.address%></p>
-                <a href="<%=fave.website%>"><%=fave.website%></a>
-                <p> <%=fave.phone_number%> </p>
+ <% faves.map((fave) =>{%>
+
+            <div class="col-lg-6 col-sm-6 mt-5">
+                <span class="card">
+
+                    <h3><%=fave.restaurant_name%></h3>
+                    <img src="<%=fave.restaurant_photo%>">
+
+                    <p><%=fave.cuisine_type%></p>
+                    <%=fave.address%>
+                    <a href="<%=fave.website%>"><%=fave.website%></a>
+                    <p> <%=fave.phone_number%> </p>
+
+
+
+                    <button onclick="deleteButton" id="delete">remove</button>
+                    <br>
+                </span>
+
+
+                <br>
             </div>
-        </li>
+            <% })%>
+
+        </div>
+    </div>
 
 
-        <button onclick="deleteButton" id="delete">remove</button>
-        <% })%>
 
 
 
-    </ul>
-
-    <a href="http://localhost:3005/" id="favorites">Back</a>
     <%- include('../partials/footer' ) %>
 </body>
 <script src="/js/app.js"></script>

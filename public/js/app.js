@@ -33,4 +33,4 @@ function filterFunction() {
 // function myFunction() {
 //   document.getElementsById("favorites")[0].removeAttribute("onclick");
 
-// };
+
