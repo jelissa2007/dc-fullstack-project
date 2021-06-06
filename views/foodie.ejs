@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.fontawesome.com/2fe46feff2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Home</title>
+    <%- include('partials/header' ) %>
+</head>
+
+<body>
+    <h1>Foodie</h1>
+
+    <script>
+        let ndx= <%= ndx %>;
+        let restaurants= <%- restaurants%>;
+        let currentRestaurant = restaurants[ndx];
+        let userId= <%= userId %>;
+
+        function increment() {
+            ndx++
+            currentRestaurant = restaurants[ndx]
+            let restTemplate=`
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="container-fluid">
+                        <div id="foodie_app">
+                            <section id="foodie_header_bar">
+                                <div>
+                                    
+                                    <div id="foodie_page_title">
+                                        <i class="fa fa-chevron-left"></i> Filters
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="foodie_price_body">
+                                <div>
+                                    <span class="heading">
+                                        By Price
+                                    </span>
+                                    <div>
+                                        <div>
+                                            <button class="price_button" type="button">&dollar;</button>
+                                        </div>
+                                        <div>
+                                            <button class="price_button" type="button">&dollar;&dollar;</button>
+                                        </div>
+                                        <div>
+                                            <button class="price_button" type="button">&dollar;&dollar;&dollar;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="dropdown">
+                                <span class="heading">
+                                    By Cuisine
+                                </span>
+                                <button onclick="myFunction()" class="dropbtn">Cuisine Type</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                    <a href="#latin">Latin</a>
+                                    <a href="#caribbean">Caribbean</a>
+                                    <a href="#vegan">Vegan</a>
+                                    <a href="#vegitarian">Vegetarian</a>
+                                    <a href="#asian">Asian</a>
+                                    <a href="#vietnamese">Vietnamese</a>
+                                    <a href="#japanese">Japanese</a>
+                                    <a href="#cajun">Cajun</a>
+                                    <a href="#soulfood">Soul Food</a>
+                                    <a href="#southern">Southern</a>
+                                    <a href="#breakfast">Breakfast</a>
+                                    <a href="#brunch">Brunch</a>
+                                    <a href="#mexican">Mexican</a>
+                                    <a href="#african">African</a>
+                                    <a href="#mediterranean">Mediterranean</a>
+                                    <a href="#bar">Bar</a>
+                                    <a href="#casual">Casual</a>
+                                    <a href="#fusion">Fusion</a>
+                                    <a href="#seafood">Seafood</a>
+                                    <a href="#american">American</a>
+                                    <a href="#bbq">BBQ</a>
+                                    <a href="#cafe">Cafe</a>
+                                    <a href="#bakery">Bakery</a>
+                                    <a href="#french">French</a>
+                                    <a href="#italian">Italian</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="form-signin" action="/foodie/favorites" method="post">
+                <div class="col align-self-center">
+                    
+                    <br>
+                        <input type="text" class="hide" id="${userId}" name="userId" value="${userId}">
+                        <input type="text" class="hide" id="${currentRestaurant.id}" name="restaurant_id"
+                            value="${currentRestaurant.id}">
+                            <input type="text" class="hide" id="${currentRestaurant.food_photo}" name="restaurant_photo"
+                            value="${currentRestaurant.food_photo}">
+                            <input type="text" class="hide" id="${currentRestaurant.restaurant_name}" name="restaurant_name"
+                            value="${currentRestaurant.restaurant_name}">
+                            <input type="text" class="hide" id="${currentRestaurant.cuisine_type}" name="cuisine_type"
+                            value="${currentRestaurant.cuisine_type}">
+                            <input type="text" class="hide" id="${currentRestaurant.address}" name="address"
+                            value="${currentRestaurant.address}">
+                            <input type="text" class="hide" id="${currentRestaurant.phone_number}" name="phone_number"
+                            value="${currentRestaurant.phone_number}">
+                            <input type="text" class="hide" id="${currentRestaurant.website}" name="website"
+                            value="${currentRestaurant.website}">
+                        <div id="main">
+                            <div class="container1" id="blur">
+                                <div class="content" id="content">
+                                
+                                    <div id='card'>
+                                        
+                                        <div id='upper-side'>
+                                            <img src="${currentRestaurant.food_photo}"
+                                                    onclick="toggle()" id="foodPic">
+                                        </div>
+                                        <div id='lower-side'>
+                                            <h2 id="restName">${currentRestaurant.restaurant_name}</h2>
+                                            <span id="restCuisine"><span
+                                                    id="cuisine_type">${currentRestaurant.cuisine_type}</span>
+                                                <span
+                                                    id="price">${currentRestaurant.chef?.last_name || '$'}</span></span>
+                                            <br>
+                                        </div>
+                                        <br>
+                                        <span>
+                                        <button id="next" onclick="increment()"><i class="fa fa-arrow-circle-right"></i></button><span
+                                            style="display:inline-block; width: 20px;"></span><span
+                                            style="display:inline-block; width: 20px;"></span><span
+                                            style="display:inline-block; width: 20px;"></span></span>
+                                            <span>
+                                        <button id="like" type="submit"><i class="fa fa-heart"></i></button><span
+                                            style="display:inline-block; width: 20px;"></span></span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="popup">
+                                <nav>
+                                    <ul>
+                                        <li><a href="#menu">Menu Details</a></li>
+                                        <li><a href="#chef">About The Chef</a></li>
+                                        <li><a href="#dishes">Top Dishes</a></li>
+                                        <li><a href="#details">Restaurant Details</a></li>
+                                        <li><a href="#" onclick="toggle()">Go Back</a></li>
+                                    </ul>
+                                </nav>
+                                <br>
+                                <figure class="popout_img">
+                                    <h2>${currentRestaurant.restaurant_name}</h2>
+                                    <img src="${currentRestaurant.location_photo}" id="restLocation">
+                                </figure>
+                                <br><br><br>
+                                <div id="menu">
+                                    <h2>Menu Details</h2>
+                                    <img src="${currentRestaurant.menu_photo}" id="restMenu">
+                                </div>
+                                <br><br>
+                                <div id="chef">
+                                    <h2>About Chef</h2>
+                                    <img src="${currentRestaurant.chef_photo}" id="restChef">
+                                    
+
+                                </div>
+                                <br>
+                                <div id="dishes">
+                                    <h2>Top Dishes</h2>
+                                    <img src="${currentRestaurant.food_photo}" id="restPopDish">
+                                    <p id="restPopDishDescription">${currentRestaurant.popular_dish}</p>
+                                </div>
+                                <br>
+                                <div id="details">
+                                    <h2>Restaurant Details</h2>
+                                    <p id="restName"> ${currentRestaurant.restaurant_name} </p>
+                                    <p id="restAddress"> ${currentRestaurant.address}</p>
+                                    <p id="restNumber"> ${currentRestaurant.phone_number}</p>
+                                    <p id="restHours"> ${currentRestaurant.hours}</p>
+                                    <p id="restWebsite"> <a
+                                            href="${currentRestaurant.website}">${currentRestaurant.website}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col">
+                    <br>
+                    <a href="http://localhost:3005/foodie/favorites" id="favorites">YourFavorites!</a>
+                </div>
+            </div>
+        </div>`
+            const container=document.getElementById('content')
+            container.innerHTML=restTemplate
+            if (ndx >= 24) {
+                ndx = 0;
+            }
+        }
+        function toggle() {
+            let blur=document.getElementById('blur');
+            blur.classList.toggle('active')
+            let popup=document.getElementById('popup');
+            popup.classList.toggle('active')
+        }
+        $(document).ready(increment)
+    </script>
+
+    <!-- <div id="main">
+        <div class="container" id="blur"> -->
+
+    <div class="content" id="content">
+        <br><br><br>
+    </div>
+
+
+    <div class="footer">
+        <%- include('partials/footer' ) %>
+
+    </div>
+
+</body>
+
+</html>

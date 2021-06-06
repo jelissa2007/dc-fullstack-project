@@ -1,4 +1,4 @@
-
+const { Op } = require("sequelize");
 const express=require('express')
 const bodyParser=require('body-parser');
 const path=require('path')
@@ -22,16 +22,48 @@ app.use(session({
 
 app.set('view engine', 'ejs');
 app.set('views', 'views')
+// const prices = {
+//     low: '$',
+//     med: '$$',
+//     high: '$$$'
+// }
 
 // main foodie page
 app.get('/foodie', async (req, res) => {
     console.log(req.session);
+    // req.query;
+    // const price = prices[req.query.price];
     let ndx = 0;
+    let include = 'chef';
     const userId = req.session.user.id;
-    const restaurantModels = await db.Restaurant.findAll({ include: 'chef' });
-    const restaurants = JSON.stringify(restaurantModels);
+    const price = '$$';
+    const cuisine = 'Latin';
 
-    res.render('home', { restaurants, ndx, userId })
+    if (price && price.length) {
+        include = {
+            model: db.Chefs,
+            as: 'chef',
+            where: {
+                last_name: price
+            }
+        }
+    }
+
+    const restaurantModels = await db.Restaurant.findAll({ 
+        where: {
+            cuisine_type: {
+                [Op.like]: `%${cuisine}%`
+            }
+        },
+        include: include // 'chef' or {}
+    });
+    const restaurants = JSON.stringify(restaurantModels);
+    console.log(restaurants);
+    res.render('foodie', { restaurants, ndx, userId })
+})
+
+app.get('/home', (req, res) => {
+    res.render('home');
 })
 
 // signup page
@@ -50,7 +82,7 @@ app.post('/foodie/signup', async function (req, res, next) {
 
     req.session.user = user[0];
 
-    res.redirect('/foodie')
+    res.redirect('/home')
 });
 
 // add favorites
